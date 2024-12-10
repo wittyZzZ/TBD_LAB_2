@@ -7,6 +7,10 @@ CREATE DATABASE tbd_lab_1;
 -- Conectarse a la nueva base de datos
 \c tbd_lab_1
 
+-- Habilitar las extensiones PostGIS
+CREATE EXTENSION IF NOT EXISTS postgis;
+CREATE EXTENSION IF NOT EXISTS postgis_topology;
+
 -- Inicio de la creación de tablas
 BEGIN;
 
