@@ -73,4 +73,18 @@ CREATE TABLE IF NOT EXISTS audit_log
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS tienda (
+    id_tienda SERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    direccion VARCHAR(255),
+    coordenadas GEOMETRY(POINT, 4326) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS repartidor (
+    id_repartidor SERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    coordenadas GEOMETRY(POINT, 4326) NOT NULL
+);
+
+
 END;
