@@ -12,5 +12,12 @@ const create = (orden) => {
     return httpClient.post('/api/orden/crear', orden);
   };
 
+const update = (id, orden) => {
+  return httpClient.put(`/api/orden/${id}`, orden);
+};
+  
+const remove = (id) => {
+  return httpClient.delete(`/api/orden/${id}`);
+};
 
-export default { getAll, getById, create };
+export default { getAll, getById, create, update, remove };

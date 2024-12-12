@@ -24,6 +24,7 @@
           { text: "Inicio", icon: "mdi-home", route: "/" },
           { text: "Productos", icon: "mdi-package-variant", route: "/products" },
           { text: "Categorias", icon: "mdi-checkbox-multiple-blank", route: ""},
+          { text: "Ordenes", icon: "mdi-order-bool-descending-variant", route: "/orders"},
           { text: "Perfil", icon: "mdi-account", route: "/client" },
           // Agrega más opciones de menú según tus necesidades
         ],
