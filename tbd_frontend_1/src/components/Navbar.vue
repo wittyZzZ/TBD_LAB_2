@@ -49,11 +49,6 @@ export default {
       drawer: false,
     };
     },
-  /* data() {
-    return {
-      cartCount: 3, // Cambia este valor según la cantidad de productos en el carrito
-    };
-  }, */
 
   methods: {
     toggleDrawer() {

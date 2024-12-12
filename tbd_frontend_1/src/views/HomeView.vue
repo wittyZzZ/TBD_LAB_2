@@ -2,9 +2,13 @@
 
 import { jwtDecode } from 'jwt-decode';
 import clienteService from '../services/cliente.service';
+import Map from "../components/Map.vue";
 
 export default{
   inject: ["logout"],
+  components: {
+    Map
+  },
   name: 'Home',
   data() {
     return{
@@ -14,14 +18,6 @@ export default{
   methods: {
   },
   mounted() {
-
-    // clienteService.getAll()
-    //   .then(response => {
-    //     this.users = response.data; // Asignamos los datos de la respuesta
-    //   })
-    //   .catch(error => {
-    //     console.error('Error al obtener los usuarios:', error); // Manejamos errores
-    //   });
   }
 }
 </script>
@@ -33,17 +29,10 @@ export default{
       <v-card class="text-center pa-6" elevation="8" max-width="400">
         <v-card-title class="text-h5">Bienvenido</v-card-title>
         <p>Ve a la pestaña "Productos" para empezar tu compra</p>
-
       </v-card>
-
-      <!-- <v-col cols="4" class="bg-purple text-center">
-        <v-btn color="primary" :to="{ name: 'Products' }">
-          LINK A PRODUCTOS
-        </v-btn>
-      </v-col> -->
-
     </v-row>
   </v-container>
+
 </template>
 
 <style scoped>
@@ -55,6 +44,13 @@ export default{
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;
+  }
+
+  .map-container {
+    width: 80%;
+    min-width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 </style>
 
