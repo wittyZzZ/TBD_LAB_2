@@ -7,7 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.tbd_grupo_8.lab_1.services.TiendaService;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tienda")
@@ -50,5 +54,6 @@ public class TiendaController {
         tiendaService.delete(id);
         return ResponseEntity.ok("Tienda eliminada");
     }
+
 
 }
