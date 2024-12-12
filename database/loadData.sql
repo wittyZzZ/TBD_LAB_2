@@ -75,7 +75,7 @@ INSERT INTO CLIENTE (username, direccion, email, contrasena, telefono, rol) VALU
 ('user_20', 'Calle Real 19, Ciudad T', 'vicente.navarro@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3256', 'USER');
 
 -- Inserción de datos en la tabla Tienda
-INSERT INTO tienda (nombre, direccion, coordenadas) 
-VALUES ('Tienda Costanera Center', 'Av. Andres Bello 2425, Providencia, Santiago', ST_SetSRID(ST_MakePoint(-70.6056, -33.4170), 4326));
+INSERT INTO tienda (nombre, direccion, coordenadas, latitude, longitude) 
+VALUES ('Tienda Costanera Center', 'Av. Andres Bello 2425, Providencia, Santiago', ST_SetSRID(ST_MakePoint(-70.6056, -33.4170), 4326), -70.6056, -33.4170);
 
 

@@ -78,17 +78,20 @@ CREATE TABLE IF NOT EXISTS audit_log
 );
 
 CREATE TABLE IF NOT EXISTS tienda (
-    id_tienda SERIAL PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL,
+    id_tienda SERIAL NOT NULL PRIMARY KEY,
+    nombre VARCHAR(255),
     direccion VARCHAR(255),
-    coordenadas GEOMETRY(POINT, 4326) NOT NULL
+    coordenadas GEOMETRY(POINT, 4326),
+    latitude FLOAT,
+    longitude FLOAT
 );
 
 CREATE TABLE IF NOT EXISTS repartidor (
-    id_repartidor SERIAL PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL,
-    coordenadas GEOMETRY(POINT, 4326) NOT NULL
+    id_repartidor SERIAL NOT NULL PRIMARY KEY,
+    nombre VARCHAR(255),
+    coordenadas GEOMETRY(POINT, 4326),
+    latitude FLOAT,
+    longitude FLOAT
 );
-
 
 END;

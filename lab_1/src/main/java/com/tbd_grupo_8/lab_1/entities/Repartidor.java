@@ -12,5 +12,7 @@ import java.awt.*;
 public class Repartidor {
     private Long id_repartidor;
     private String nombre;
-    private Point coordenadas;
+    private String coordenadas;
+    private double latitude;
+    private double longitude;
 }
