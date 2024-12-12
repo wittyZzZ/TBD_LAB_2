@@ -26,6 +26,7 @@
           { text: "Categorias", icon: "mdi-checkbox-multiple-blank", route: ""},
           { text: "Ordenes", icon: "mdi-order-bool-descending-variant", route: "/orders"},
           { text: "Perfil", icon: "mdi-account", route: "/client" },
+          { text: "Ordenes en radio de almacén", icon: "mdi-account", route: "/orderstore"},
           // Agrega más opciones de menú según tus necesidades
         ],
       };

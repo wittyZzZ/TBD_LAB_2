@@ -10,6 +10,7 @@ import DetailsProductView from '@/views/DetailsProductView.vue'
 import PaymentView from '@/views/PaymentView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import OrdersView from '@/views/OrdersView.vue'
+import OrdersByStore from '@/views/OrdersByStore.vue'
 
 const routes = [
   {
@@ -69,6 +70,11 @@ const routes = [
     path: '/orders',
     name: 'OrdersView',
     component: OrdersView
+  },
+  {
+    path: '/orderstore',
+    name: 'OrdersByStore',
+    component: OrdersByStore
   },
   {
     path: '/:pathMatch(.*)*', // Ruta catch-all
