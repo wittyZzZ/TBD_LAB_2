@@ -33,6 +33,7 @@
       // Inicializa los grupos de capas para marcadores y círculos
       this.circleGroup = L.layerGroup().addTo(this.map);
       this.markerGroup = L.layerGroup().addTo(this.map);
+      this.polygonGroup = L.layerGroup().addTo(this.map); // Asegúrate de inicializar polygonGroup
     },
     methods: {
       // Agrega un marcador al mapa
@@ -91,6 +92,21 @@
         this.circleGroup.clearLayers(); // Limpia cualquier círculo existente
         const circle = L.circle([lat, lon], { radius: rad }); // Crea un nuevo círculo
         this.circleGroup.addLayer(circle); // Agrega el círculo al grupo
+      },
+
+      // Dibuja un polígono en el mapa
+      putPolygon(polygon, options = {}) {
+        this.polygonGroup.clearLayers(); // Limpia cualquier polígono existente
+        const defaultOptions = {
+          color: "red", // Color del borde
+          fillColor: "lightpink", // Color del relleno
+          fillOpacity: 0.5, // Opacidad del relleno
+          weight: 2, // Grosor del borde
+        };
+        const mergedOptions = { ...defaultOptions, ...options }; // Combina opciones por defecto con las personalizadas
+
+        const leafletPolygon = L.polygon(polygon, mergedOptions); // Crea un nuevo polígono
+        this.polygonGroup.addLayer(leafletPolygon); // Agrega el polígono al grupo
       },
     },
   };
