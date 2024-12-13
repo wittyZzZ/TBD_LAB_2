@@ -7,6 +7,9 @@
   import "leaflet/dist/leaflet.css";
   import greypng from "../assets/marker-icon-2x-grey.png";
   import redpng from "../assets/marker-icon-2x-red.png";
+  import storeicon from "../assets/store5.png";
+  import ordericon from "../assets/order2.png";
+  import deliveryicon from "../assets/shipment.png";
   
   export default {
     name: "Map",
@@ -36,29 +39,41 @@
       putMarker(name, lat, lon, icon = null) {
         let marker;
         switch (icon) {
-          case "grey":
-            const grayIcon = new L.Icon({
-              iconUrl: greypng,
+          case "store":
+            const storeIcon = new L.Icon({
+              iconUrl: storeicon,
               shadowUrl:
                 "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
-              iconSize: [25, 41],
+              iconSize: [60, 60],
               iconAnchor: [12, 41],
               popupAnchor: [1, -34],
               shadowSize: [41, 41],
             });
-            marker = L.marker([lat, lon], { title: name, icon: grayIcon });
+            marker = L.marker([lat, lon], { title: name, icon: storeIcon });
             break;
-          case "red":
-            const redIcon = new L.Icon({
-              iconUrl: redpng,
+          case "order":
+            const orderIcon = new L.Icon({
+              iconUrl: ordericon,
               shadowUrl:
                 "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
-              iconSize: [25, 41],
+              iconSize: [50, 50],
               iconAnchor: [12, 41],
               popupAnchor: [1, -34],
               shadowSize: [41, 41],
             });
-            marker = L.marker([lat, lon], { title: name, icon: redIcon });
+            marker = L.marker([lat, lon], { title: name, icon: orderIcon });
+            break;
+          case "delivery":
+            const deliveryIcon = new L.Icon({
+              iconUrl: deliveryicon,
+              shadowUrl:
+                "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+              iconSize: [50, 50],
+              iconAnchor: [12, 41],
+              popupAnchor: [1, -34],
+              shadowSize: [41, 41],
+            });
+            marker = L.marker([lat, lon], { title: name, icon: deliveryIcon });
             break;
           default:
             marker = L.marker([lat, lon], { title: name });
