@@ -27,6 +27,7 @@
           { text: "Ordenes", icon: "mdi-order-bool-descending-variant", route: "/orders"},
           { text: "Perfil", icon: "mdi-account", route: "/client" },
           { text: "Ordenes en radio de almacén", icon: "mdi-account", route: "/orderstore"},
+          { text: "Repartidores en zona de reparto", icon: "mdi-account", route: "/deliveryzone"},
           // Agrega más opciones de menú según tus necesidades
         ],
       };

@@ -12,6 +12,7 @@ import NotFoundView from '@/views/NotFoundView.vue'
 import OrdersView from '@/views/OrdersView.vue'
 import OrdersByStore from '@/views/OrdersByStore.vue'
 import DeliveryBy30 from '@/views/DeliveryBy30.vue'
+import DeliveryByZone from '@/views/DeliveryByZone.vue'
 
 const routes = [
   {
@@ -81,6 +82,11 @@ const routes = [
     path: '/orderstore',
     name: 'OrdersByStore',
     component: OrdersByStore
+  },
+  {
+    path: '/deliveryzone',
+    name: 'DeliveryByZone',
+    component: DeliveryByZone
   },
   {
     path: '/:pathMatch(.*)*', // Ruta catch-all
