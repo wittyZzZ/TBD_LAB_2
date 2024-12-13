@@ -12,6 +12,9 @@
           class="elevation-1"
           dense
         >
+        <template #item.id_delivery="{ item }">
+          {{ getRepartidorName(item.id_delivery) }}
+        </template>
           <template #top>
             <v-toolbar flat>
               <v-toolbar-title>Órdenes</v-toolbar-title>
@@ -85,6 +88,14 @@
                 step="0.01"
                 required
               ></v-text-field>
+              <v-select
+                v-model="form.id_delivery"
+                :items="repartidores"
+                item-text="nombre"
+                item-value="id_repartidor"
+                label="Repartidor"
+                required
+              ></v-select>
             </v-form>
           </v-card-text>
           <v-card-actions>
@@ -99,11 +110,13 @@
   
   <script>
   import ordenService from '@/services/orden.service';
+  import deliveryService from '@/services/delivery.service';
 
   export default {
     data() {
       return {
         //ordenes: [],
+        //repartidores: [],
         /*headers: [
             { text: "ID Orden", value: "id_orden" },
             { text: "Fecha", value: "fecha_orden" },
@@ -113,8 +126,13 @@
             { text: "Acciones", value: "acciones", sortable: false },
         ] */
         ordenes: [
-          { id_orden: 1, fecha_orden: "2024-12-10", estado: "Pendiente", id_cliente: 101, total: 1200.5 },
-          { id_orden: 2, fecha_orden: "2024-12-11", estado: "Completada", id_cliente: 102, total: 800.0 },
+          { id_orden: 1, fecha_orden: "2024-12-10", estado: "Pendiente", id_cliente: 101, total: 1200.5, id_delivery: 1 },
+          { id_orden: 2, fecha_orden: "2024-12-11", estado: "Completada", id_cliente: 102, total: 800.0, id_delivery: 2 },
+        ],
+        repartidores: [
+          { id_repartidor: 1, nombre: "Juan Pérez" },
+          { id_repartidor: 2, nombre: "María López" },
+          { id_repartidor: 3, nombre: "Carlos Ruiz" },
         ],
         headers: [
           { text: "ID Orden", value: "id_orden" },
@@ -122,6 +140,7 @@
           { text: "Estado", value: "estado" },
           { text: "ID Cliente", value: "id_cliente" },
           { text: "Total", value: "total" },
+          { text: "Repartidor", value: "id_delivery" },
           { text: "Acciones", value: "acciones", sortable: false },
         ],
         dialog: false,
@@ -131,16 +150,18 @@
           estado: "",
           id_cliente: null,
           total: null,
+          id_delivery: null,
         },
         formTitle: "",
         valid: false,
         datePicker: false,
       };
     },
-    /*created() {
-      this.fetchOrdenes();
-    }, */
-    /* 
+    /*async created() {
+      await this.fetchOrdenes();
+      await this.repartidores();
+    },
+ 
     methods: {
       async fetchOrdenes() {
         try {
@@ -148,6 +169,15 @@
           this.ordenes = response.data;
         } catch (error) {
           console.error("Error al obtener las órdenes:", error);
+        }
+      },
+      async fetchRepartidores(){
+        try{
+          const response = await deliveryService.getAll();
+          this.repartidores = response.data;
+        }
+        catch(error){
+          console.error("Error al obtener repartidores:", error);
         }
       },
       openDialog() {
@@ -197,6 +227,10 @@
     },
     */
     methods: {
+      getRepartidorName(id) {
+        const rep = this.repartidores.find(r => r.id_repartidor === id);
+        return rep ? rep.nombre : 'Sin asignar';
+      },
       openDialog() {
         this.form = {
           id_orden: null,
@@ -204,6 +238,8 @@
           estado: "",
           id_cliente: null,
           total: null,
+          id_delivery: "",
+
         };
         this.formTitle = "Nueva Orden";
         this.dialog = true;

@@ -36,6 +36,7 @@
 <script>
 import Map from "../components/Map.vue";
 import deliveryService from "@/services/delivery.service";
+import tiendaService from "@/services/tienda.service";
 
 export default {
     components: { Map },
@@ -43,9 +44,11 @@ export default {
         return {
             stores: [], // Lista de tiendas
             selectedStoreId: null, // Tienda seleccionada
+            //selectedStoreId: 1,
             radius: 30, // Radio en kilómetros
             repartidores: [], // Repartidores obtenidos
              // Repartidores dentro del radio
+             //para caso real comentar allRepartidores
             allRepartidores: [ // Repartidores de prueba
                 { id_repartidor: 1, nombre: "Repartidor 1", latitude: -33.4510, longitude: -70.6510 },
                 { id_repartidor: 2, nombre: "Repartidor 2", latitude: -33.4490, longitude: -70.6480 },
@@ -55,6 +58,66 @@ export default {
             ]
         };
     },
+    /* 
+    methods: {
+        async fetchNearbyRepartidores() {
+        //ver si quitar lo de this.radius <= 0
+            if (!this.selectedStoreId || this.radius <= 0) {
+                alert("Por favor, selecciona una tienda y un radio válido.");
+                return;
+            }
+
+            // Encuentra la tienda seleccionada
+            const selectedStore = this.stores.find(store => store.id_tienda === this.selectedStoreId);
+
+            if (!selectedStore) {
+                alert("Tienda no encontrada.");
+                return;
+            }
+
+            try {
+                // Llamada al backend para obtener repartidores cercanos
+                const response = await deliveryService.getNearbyRepartidores(
+                    selectedStore.latitude,
+                    selectedStore.longitude,
+                    this.radius
+                );
+
+                // Limpia el mapa y agrega el círculo y los marcadores
+                this.$refs.map.clearMarkers();
+                this.$refs.map.putCircle(selectedStore.latitude, selectedStore.longitude, this.radius * 1000);
+
+                // Muestra los repartidores obtenidos
+                this.repartidores = response.data;
+
+                this.repartidores.forEach(rep => {
+                    this.$refs.map.putMarker(rep.nombre, rep.latitud, rep.longitud, "grey");
+                });
+            } catch (error) {
+                console.error("Error al obtener repartidores:", error);
+                alert("Error al obtener repartidores. Por favor, intenta nuevamente.");
+            }
+        }
+    },
+    */
+    /* 
+    async mounted() {
+        try {
+            // Cargar las tiendas desde el backend
+            const response = await tiendaService.getAll();
+            this.stores = response.data;
+
+            // Opcional: Centrar el mapa en la tienda principal por defecto
+            const mainStore = this.stores.find(s => s.id_tienda === 1);
+            if (mainStore && this.$refs.map) {
+                this.$refs.map.setCenter(mainStore.latitude, mainStore.longitude);
+            }
+        } catch (error) {
+            console.error("Error al obtener las tiendas:", error);
+            alert("Error al obtener las tiendas. Por favor, intenta nuevamente.");
+        }
+    }
+    */
     methods: {
         async fetchNearbyRepartidores() {
             if (!this.selectedStoreId || this.radius <= 0) {
@@ -71,6 +134,8 @@ export default {
             }
             this.$refs.map.clearMarkers();
             this.$refs.map.putCircle(selectedStore.latitude, selectedStore.longitude, this.radius * 1000);
+            this.$refs.map.putMarker(selectedStore.nombre, selectedStore.latitude, selectedStore.longitude, "store")
+            //this.$refs.map.putMarker(selectedStore.nombre, selectedStore.latitude, selectedStore.longitude, "green")
 
             // Filtra repartidores cercanos
             const radiusInMeters = this.radius * 1000;
@@ -86,7 +151,7 @@ export default {
 
             // Marca los repartidores en el mapa
             this.repartidores.forEach(rep => {
-                this.$refs.map.putMarker(rep.nombre, rep.latitude, rep.longitude, "grey");
+                this.$refs.map.putMarker(rep.nombre, rep.latitude, rep.longitude, "delivery");
             });
 
             /* try {
