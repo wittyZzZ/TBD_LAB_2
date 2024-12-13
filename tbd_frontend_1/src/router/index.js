@@ -11,6 +11,7 @@ import PaymentView from '@/views/PaymentView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import OrdersView from '@/views/OrdersView.vue'
 import OrdersByStore from '@/views/OrdersByStore.vue'
+import DeliveryBy30 from '@/views/DeliveryBy30.vue'
 
 const routes = [
   {
@@ -70,6 +71,11 @@ const routes = [
     path: '/orders',
     name: 'OrdersView',
     component: OrdersView
+  },
+  {
+    path: '/delivery30',
+    name: 'DeliveryBy30',
+    component: DeliveryBy30
   },
   {
     path: '/orderstore',

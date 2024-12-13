@@ -99,10 +99,19 @@
   
   <script>
   import ordenService from '@/services/orden.service';
-  
+
   export default {
     data() {
       return {
+        //ordenes: [],
+        /*headers: [
+            { text: "ID Orden", value: "id_orden" },
+            { text: "Fecha", value: "fecha_orden" },
+            { text: "Estado", value: "estado" },
+            { text: "ID Cliente", value: "id_cliente" },
+            { text: "Total", value: "total" },
+            { text: "Acciones", value: "acciones", sortable: false },
+        ] */
         ordenes: [
           { id_orden: 1, fecha_orden: "2024-12-10", estado: "Pendiente", id_cliente: 101, total: 1200.5 },
           { id_orden: 2, fecha_orden: "2024-12-11", estado: "Completada", id_cliente: 102, total: 800.0 },
@@ -128,6 +137,65 @@
         datePicker: false,
       };
     },
+    /*created() {
+      this.fetchOrdenes();
+    }, */
+    /* 
+    methods: {
+      async fetchOrdenes() {
+        try {
+          const response = await ordenService.getAll();
+          this.ordenes = response.data;
+        } catch (error) {
+          console.error("Error al obtener las órdenes:", error);
+        }
+      },
+      openDialog() {
+        this.form = {
+          id_orden: null,
+          fecha_orden: null,
+          estado: "",
+          id_cliente: null,
+          total: null,
+        };
+        this.formTitle = "Nueva Orden";
+        this.dialog = true;
+      },
+      editOrden(item) {
+        this.form = { ...item };
+        this.formTitle = "Editar Orden";
+        this.dialog = true;
+      },
+      async saveOrden() {
+        if (!this.$refs.form.validate()) return;
+  
+        try {
+          if (this.form.id_orden) {
+            // Actualizar orden existente
+            await ordenService.update(this.form.id_orden, this.form);
+          } else {
+            // Crear nueva orden
+            await ordenService.create(this.form);
+          }
+          this.fetchOrdenes(); // Refrescar la lista
+          this.closeDialog();
+        } catch (error) {
+          console.error("Error al guardar la orden:", error);
+        }
+      },
+      async deleteOrden(item) {
+        try {
+          await ordenService.remove(item.id_orden);
+          this.fetchOrdenes(); // Refrescar la lista
+        } catch (error) {
+          console.error("Error al eliminar la orden:", error);
+        }
+      },
+      closeDialog() {
+        this.dialog = false;
+      },
+    },
+    */
     methods: {
       openDialog() {
         this.form = {
