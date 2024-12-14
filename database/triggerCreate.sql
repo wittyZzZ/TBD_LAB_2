@@ -111,6 +111,7 @@ BEGIN
 END;
 $$;
 
+-- Funcion para listar ordenes en un radio alrededor de una tienda especifica
 CREATE OR REPLACE FUNCTION get_orders_within_radius(id_tienda_input INTEGER, radius_km DOUBLE PRECISION)
 RETURNS TABLE (
     id_orden INTEGER,
@@ -142,3 +143,44 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Funcion para encontrar repartidores dentro de un poligono
+CREATE OR REPLACE FUNCTION get_delivery_in_polygon(id_poligono INTEGER)
+RETURNS TABLE (
+    id_repartidor INTEGER,
+    nombre_repartidor VARCHAR(255),
+    id_orden INTEGER,
+    fecha_orden TIMESTAMP
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        r.id_repartidor,
+        r.nombre AS nombre_repartidor,
+        o.id_orden,
+        o.fecha_orden
+    FROM 
+        orden o
+    INNER JOIN repartidor r ON o.id_repartidor = r.id_repartidor
+    INNER JOIN cliente c ON o.id_cliente = c.id_cliente
+    INNER JOIN zona_reparto p ON ST_Within(c.coordenadas, p.poligono)
+    WHERE 
+        p.id_zona = id_poligono;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Funcion 24 id_tienda = 1 y radius 30 para realizar lo pedido
+CREATE OR REPLACE FUNCTION get_repartidores_count_within_radius(id_tienda_input INTEGER, radius_km DOUBLE PRECISION) 
+RETURNS TABLE (cantidad_repartidores BIGINT) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT COUNT(DISTINCT r.id_repartidor) AS cantidad_repartidores
+    FROM 
+        orden o
+    INNER JOIN repartidor r ON o.id_repartidor = r.id_repartidor
+    INNER JOIN cliente c ON o.id_cliente = c.id_cliente
+    INNER JOIN tienda t ON o.id_tienda = t.id_tienda
+    WHERE 
+        t.id_tienda = id_tienda_input
+        AND ST_DistanceSphere(c.coordenadas, t.coordenadas) <= radius_km * 1000;
+END;
+$$ LANGUAGE plpgsql;

@@ -81,8 +81,8 @@ VALUES ('Tienda Costanera Center', 'Av. Andres Bello 2425, Providencia, Santiago
 ('Tienda Las Nieves', 'Los Mallines 1996, Puente Alto, Santiago', ST_SetSRID(ST_MakePoint(-70.57602256706053, -33.59415557033961), 4326)),
 ('Tienda Maipú', 'Rafael Frontaura 5-99, Maipú, Santiago', ST_SetSRID(ST_MakePoint(-70.75585819880487, -33.514533912551755), 4326)),
 ('Tienda La Reina', 'Av. Blest Gana 5962, La Reina, Santiago', ST_SetSRID(ST_MakePoint(-70.5685, -33.4553), 4326)),
-('TecTec - Tecnología y Computación','Oficina Contable - Ventas Solo en Nuestra Web - Moneda 812, Santiago, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.64745903544836, -33.44157280323984)4326)),
-('ABCDIN Estado', 'Paseo Estado 73, 8320256 Santiago, Región Metropolitana',ST_SetSRID(ST_MakePoint(-70.64899653193504, -33.44174084107714)4326)),
+('TecTec - Tecnología y Computación','Oficina Contable - Ventas Solo en Nuestra Web - Moneda 812, Santiago, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.64745903544836, -33.44157280323984), 4326)),
+('ABCDIN Estado', 'Paseo Estado 73, 8320256 Santiago, Región Metropolitana',ST_SetSRID(ST_MakePoint(-70.64899653193504, -33.44174084107714), 4326)),
 ('Tecnodetodo', 'Av. Domingo Sta. María 3584, 8640722 Renca, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.69452693082134, -33.40700876892923), 4326)),
 ('Techcenter', 'San Diego 335, 8320000 Santiago, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.65089521869716, -33.4484501686001), 4326)),
 ('Tecnozona', 'Francisco Bilbao 1344, Local 103, 7500000 Providencia, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.6096002299189, -33.437859593913444), 4326)),
@@ -90,14 +90,17 @@ VALUES ('Tienda Costanera Center', 'Av. Andres Bello 2425, Providencia, Santiago
 
 -- Inserción de datos en la tabla Repartidor
 INSERT INTO REPARTIDOR (nombre, coordenadas)
-VALUES ('Tomás Soto', ST_SetSRID(ST_MakePoint(-70.60836609, -33.50862745), 4326));
+VALUES ('Tomás Soto', ST_SetSRID(ST_MakePoint(-70.60836609, -33.50862745), 4326)),
+('Carlos Barra', ST_SetSRID(ST_MakePoint(-70.6453284199841, -33.45860089018716), 4326)),
+('Benjamín Tapia', ST_SetSRID(ST_MakePoint(-70.7103335299697, -33.50162765386649), 4326)),
+('Andrés Garrido', ST_SetSRID(ST_MakePoint(-70.57405727196812, -33.54751053310172), 4326));
 
 -- Inserción de datos en la tabla Orden
 INSERT INTO ORDEN (estado, id_cliente, total, id_repartidor, id_tienda) VALUES
 ('Enviada', 10, 24000, 1, 2),
-('Completada', 1, 30000, 1, 1),
-('Enviada', 4, 5600, 1, 1),
-('Enviada', 16, 12000, 1, 1),
+('Completada', 1, 30000, 2, 1),
+('Enviada', 4, 5600, 3, 1),
+('Enviada', 16, 12000, 4, 1),
 ('Completada', 1, 44000, 1, 1);
 
 -- Inserción de datos en la tabla Poligono
