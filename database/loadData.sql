@@ -77,8 +77,24 @@ INSERT INTO CLIENTE (username, direccion, email, contrasena, telefono, rol, coor
 -- Inserción de datos en la tabla Tienda
 INSERT INTO TIENDA (nombre, direccion, coordenadas) 
 VALUES ('Tienda Costanera Center', 'Av. Andres Bello 2425, Providencia, Santiago', ST_SetSRID(ST_MakePoint(-70.6056, -33.4170), 4326)),
-('Tienda La Reina', 'Av. Blest Gana 5962, La Reina, Santiago', ST_SetSRID(ST_MakePoint(-70.5685, -33.4553), 4326));
+('Tienda La Reina', 'Av. Blest Gana 5962, La Reina, Santiago', ST_SetSRID(ST_MakePoint(-70.5685, -33.4553), 4326)),
+('Tienda Las Nieves', 'Los Mallines 1996, Puente Alto, Santiago', ST_SetSRID(ST_MakePoint(-70.57602256706053, -33.59415557033961), 4326)),
+('Tienda Maipú', 'Rafael Frontaura 5-99, Maipú, Santiago', ST_SetSRID(ST_MakePoint(-70.75585819880487, -33.514533912551755), 4326));
 
 -- Inserción de datos en la tabla Repartidor
 INSERT INTO REPARTIDOR (nombre, coordenadas)
 VALUES ('Tomás Soto', ST_SetSRID(ST_MakePoint(-70.60836609, -33.50862745), 4326));
+
+-- Inserción de datos en la tabla Orden
+INSERT INTO ORDEN (estado, id_cliente, total, id_repartidor, id_tienda) VALUES
+('Enviada', 10, 24000, 1, 2),
+('Completada', 1, 30000, 1, 1),
+('Enviada', 4, 5600, 1, 1),
+('Enviada', 16, 12000, 1, 1),
+('Completada', 1, 44000, 1, 1);
+
+-- Inserción de datos en la tabla Poligono
+INSERT INTO ZONA_REPARTO (nombre, poligono)
+VALUES ('Poligono Centro', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.68965994719805 -33.419622713280866, -70.63343880436038 -33.436767034525424, -70.60684528230406 -33.41658069751892, -70.58021703839037 -33.48742592788876, -70.69165479386703 -33.49488968909503, -70.68965994719805 -33.419622713280866)')), 4326)),
+('Poligono Puente Alto', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.55608391865024 -33.54342781519428, -70.6196885668074 -33.54201144195442, -70.59856793794873 -33.62695273425572, -70.53423499229359 -33.6061296330255, -70.55608391865024 -33.54342781519428)')), 4326)),
+('Poligono Santiago', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.76233181623087 -33.383944888168216, -70.66545818578015 -33.36756690642463, -70.60721514415948 -33.38642613149192, -70.54203392164673 -33.329007657048415, -70.49355731556004 -33.33735851993195, -70.53503729769275 -33.609990046732385, -70.7064545773473 -33.644944725790786, -70.86187957211999 -33.5750211910383, -70.76233181623087 -33.383944888168216)')), 4326));
