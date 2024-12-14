@@ -79,7 +79,14 @@ INSERT INTO TIENDA (nombre, direccion, coordenadas)
 VALUES ('Tienda Costanera Center', 'Av. Andres Bello 2425, Providencia, Santiago', ST_SetSRID(ST_MakePoint(-70.6056, -33.4170), 4326)),
 ('Tienda La Reina', 'Av. Blest Gana 5962, La Reina, Santiago', ST_SetSRID(ST_MakePoint(-70.5685, -33.4553), 4326)),
 ('Tienda Las Nieves', 'Los Mallines 1996, Puente Alto, Santiago', ST_SetSRID(ST_MakePoint(-70.57602256706053, -33.59415557033961), 4326)),
-('Tienda Maipú', 'Rafael Frontaura 5-99, Maipú, Santiago', ST_SetSRID(ST_MakePoint(-70.75585819880487, -33.514533912551755), 4326));
+('Tienda Maipú', 'Rafael Frontaura 5-99, Maipú, Santiago', ST_SetSRID(ST_MakePoint(-70.75585819880487, -33.514533912551755), 4326)),
+('Tienda La Reina', 'Av. Blest Gana 5962, La Reina, Santiago', ST_SetSRID(ST_MakePoint(-70.5685, -33.4553), 4326)),
+('TecTec - Tecnología y Computación','Oficina Contable - Ventas Solo en Nuestra Web - Moneda 812, Santiago, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.64745903544836, -33.44157280323984)4326)),
+('ABCDIN Estado', 'Paseo Estado 73, 8320256 Santiago, Región Metropolitana',ST_SetSRID(ST_MakePoint(-70.64899653193504, -33.44174084107714)4326)),
+('Tecnodetodo', 'Av. Domingo Sta. María 3584, 8640722 Renca, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.69452693082134, -33.40700876892923), 4326)),
+('Techcenter', 'San Diego 335, 8320000 Santiago, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.65089521869716, -33.4484501686001), 4326)),
+('Tecnozona', 'Francisco Bilbao 1344, Local 103, 7500000 Providencia, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.6096002299189, -33.437859593913444), 4326)),
+('Informatica y electronica Lufraja - Punto Blue express', 'Alberdi 01781, 8500020 Santiago, Quinta Normal, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.70295864279399, -33.42567739504398), 4326));
 
 -- Inserción de datos en la tabla Repartidor
 INSERT INTO REPARTIDOR (nombre, coordenadas)
