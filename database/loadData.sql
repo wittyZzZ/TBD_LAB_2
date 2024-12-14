@@ -52,27 +52,27 @@ values ('Mouse Silencioso RGB',
 	 12000, 15, 'Disponible', 4);
 		
 -- Inserción de datos en la tabla CLIENTE sin caracteres especiales
-INSERT INTO CLIENTE (username, direccion, email, contrasena, telefono, rol) VALUES
-('user_1', 'Calle 123, Ciudad A', 'carlos.mendoza@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-1234', 'USER'),
-('user_2', 'Av. Central 45, Ciudad B', 'lucia.fernandez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-5678', 'ADMIN'),
-('user_3', 'Calle Los Robles 85, Ciudad C', 'andres.castillo@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-8765', 'USER'),
-('user_4', 'Av. Los Alamos 10, Ciudad D', 'maria.lopez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-4321', 'ADMIN'),
-('user_5', 'Calle Primavera 21, Ciudad E', 'jorge.martinez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-2468', 'USER'),
-('user_6', 'Av. La Esperanza 99, Ciudad F', 'ana.ruiz@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-1357', 'USER'),
-('user_7', 'Calle Las Palmas 7, Ciudad G', 'pedro.gonzalez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-9753', 'ADMIN'),
-('user_8', 'Calle San Juan 88, Ciudad H', 'laura.gil@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3579', 'USER'),
-('user_9', 'Av. Norte 66, Ciudad I', 'sofia.duarte@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-9632', 'ADMIN'),
-('user_10', 'Calle del Sol 41, Ciudad J', 'ramon.perez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-4682', 'USER'),
-('user_11', 'Av. Oriente 23, Ciudad K', 'carmen.vazquez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-7524', 'ADMIN'),
-('user_12', 'Calle Pino 12, Ciudad L', 'diego.sanchez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-6142', 'USER'),
-('user_13', 'Av. Libertad 14, Ciudad M', 'paula.reyes@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-8237', 'ADMIN'),
-('user_14', 'Calle Nueva 33, Ciudad N', 'alberto.morales@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-7481', 'USER'),
-('user_15', 'Av. Los Pinos 54, Ciudad O', 'marta.salinas@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-2153', 'ADMIN'),
-('user_16', 'Calle Cedros 98, Ciudad P', 'luis.rojas@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-9425', 'USER'),
-('user_17', 'Av. Amanecer 60, Ciudad Q', 'gloria.vega@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-7893', 'ADMIN'),
-('user_18', 'Calle Luna 67, Ciudad R', 'tomas.rivera@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-1568', 'USER'),
-('user_19', 'Av. Principal 5, Ciudad S', 'isabel.romero@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-8947', 'ADMIN'),
-('user_20', 'Calle Real 19, Ciudad T', 'vicente.navarro@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3256', 'USER');
+INSERT INTO CLIENTE (username, direccion, email, contrasena, telefono, rol, coordenadas, latitude, longitude) VALUES
+('user_1', 'Calle 123, Santiago Centro', 'carlos.mendoza@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-1234', 'USER', ST_SetSRID(ST_MakePoint(-70.6450, -33.4550), 4326), -33.4550, -70.6450),
+('user_2', 'Av. Central 45, Providencia', 'lucia.fernandez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-5678', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.6410, -33.4520), 4326), -33.4520, -70.6410),
+('user_3', 'Calle Los Robles 85, Las Condes', 'andres.castillo@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-8765', 'USER', ST_SetSRID(ST_MakePoint(-70.5750, -33.4150), 4326), -33.4150, -70.5750),
+('user_4', 'Av. Los Alamos 10, Ñuñoa', 'maria.lopez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-4321', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.6150, -33.4630), 4326), -33.4630, -70.6150),
+('user_5', 'Calle Primavera 21, Ñuñoa', 'jorge.martinez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-2468', 'USER', ST_SetSRID(ST_MakePoint(-70.6180, -33.4660), 4326), -33.4660, -70.6180),
+('user_6', 'Av. La Esperanza 99, Maipú', 'ana.ruiz@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-1357', 'USER', ST_SetSRID(ST_MakePoint(-70.7550, -33.5020), 4326), -33.5020, -70.7550),
+('user_7', 'Calle Las Palmas 7, Maipú', 'pedro.gonzalez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-9753', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.7570, -33.5070), 4326), -33.5070, -70.7570),
+('user_8', 'Calle San Juan 88, Renca', 'laura.gil@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3579', 'USER', ST_SetSRID(ST_MakePoint(-70.7300, -33.4000), 4326), -33.4000, -70.7300),
+('user_9', 'Av. Norte 66, Pudahuel', 'sofia.duarte@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-9632', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.8000, -33.4300), 4326), -33.4300, -70.8000),
+('user_10', 'Calle del Sol 41, La Florida', 'ramon.perez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-4682', 'USER', ST_SetSRID(ST_MakePoint(-70.5900, -33.5400), 4326), -33.5400, -70.5900),
+('user_11', 'Av. Oriente 23, La Florida', 'carmen.vazquez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-7524', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.5950, -33.5350), 4326), -33.5350, -70.5950),
+('user_12', 'Calle Pino 12, Peñalolén', 'diego.sanchez@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-6142', 'USER', ST_SetSRID(ST_MakePoint(-70.5500, -33.4900), 4326), -33.4900, -70.5500),
+('user_13', 'Av. Libertad 14, Santiago Centro', 'paula.reyes@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-8237', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.6500, -33.4510), 4326), -33.4510, -70.6500),
+('user_14', 'Calle Nueva 33, Providencia', 'alberto.morales@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-7481', 'USER', ST_SetSRID(ST_MakePoint(-70.6380, -33.4390), 4326), -33.4390, -70.6380),
+('user_15', 'Av. Los Pinos 54, Ñuñoa', 'marta.salinas@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-2153', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.6200, -33.4700), 4326), -33.4700, -70.6200),
+('user_16', 'Calle Cedros 98, Santiago Centro', 'luis.rojas@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-9425', 'USER', ST_SetSRID(ST_MakePoint(-70.6520, -33.4525), 4326), -33.4525, -70.6520),
+('user_17', 'Av. Amanecer 60, Renca', 'gloria.vega@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-7893', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.7280, -33.4020), 4326), -33.4020, -70.7280),
+('user_18', 'Calle Luna 67, Ñuñoa', 'tomas.rivera@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-1568', 'USER', ST_SetSRID(ST_MakePoint(-70.6170, -33.4640), 4326), -33.4640, -70.6170),
+('user_19', 'Av. Principal 5, Maipú', 'isabel.romero@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-8947', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.7500, -33.5000), 4326), -33.5000, -70.7500),
+('user_20', 'Calle Real 19, Peñalolén', 'vicente.navarro@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3256', 'USER', ST_SetSRID(ST_MakePoint(-70.5450, -33.4920), 4326), -33.4920, -70.5450);
 
 -- Inserción de datos en la tabla Tienda
 INSERT INTO tienda (nombre, direccion, coordenadas, latitude, longitude) 

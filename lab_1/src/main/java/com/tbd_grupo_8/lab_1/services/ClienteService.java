@@ -28,7 +28,12 @@ public class ClienteService {
         return clienteRepository.findByEmail(email);
     }
 
-    public void saveCliente(Cliente cliente) {
-        clienteRepository.createCliente(cliente);
+    public Cliente saveCliente(Cliente cliente) {
+        return clienteRepository.createCliente(cliente);
+    }
+
+    public Cliente updateCliente(Cliente cliente) { return clienteRepository.updateCliente(cliente); }
+    public Cliente deleteCliente(Long id) {
+        return clienteRepository.deleteCliente(id);
     }
 }

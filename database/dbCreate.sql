@@ -41,7 +41,27 @@ CREATE TABLE IF NOT EXISTS CLIENTE
     email varchar(100),
     contrasena varchar(100),
     telefono varchar(20),
-    rol varchar(20)
+    rol varchar(20),
+    coordenadas GEOMETRY(POINT, 4326),
+    latitude FLOAT,
+    longitude FLOAT
+);
+
+CREATE TABLE IF NOT EXISTS TIENDA (
+    id_tienda SERIAL NOT NULL PRIMARY KEY,
+    nombre VARCHAR(255),
+    direccion VARCHAR(255),
+    coordenadas GEOMETRY(POINT, 4326),
+    latitude FLOAT,
+    longitude FLOAT
+);
+
+CREATE TABLE IF NOT EXISTS REPARTIDOR (
+    id_repartidor SERIAL NOT NULL PRIMARY KEY,
+    nombre VARCHAR(255),
+    coordenadas GEOMETRY(POINT, 4326),
+    latitude FLOAT,
+    longitude FLOAT
 );
 
 CREATE TABLE IF NOT EXISTS ORDEN
@@ -51,7 +71,9 @@ CREATE TABLE IF NOT EXISTS ORDEN
     estado varchar(50),
     id_cliente integer,
     total decimal(10, 2),
-    FOREIGN KEY(id_cliente) references CLIENTE(id_cliente)
+    id_repartidor integer,
+    FOREIGN KEY(id_cliente) references CLIENTE(id_cliente),
+    FOREIGN KEY(id_repartidor) references REPARTIDOR(id_repartidor)
 );
 
 CREATE TABLE IF NOT EXISTS DETALLE_ORDEN
@@ -75,23 +97,6 @@ CREATE TABLE IF NOT EXISTS audit_log
     datos JSONB,
     usuario VARCHAR(255),
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS tienda (
-    id_tienda SERIAL NOT NULL PRIMARY KEY,
-    nombre VARCHAR(255),
-    direccion VARCHAR(255),
-    coordenadas GEOMETRY(POINT, 4326),
-    latitude FLOAT,
-    longitude FLOAT
-);
-
-CREATE TABLE IF NOT EXISTS repartidor (
-    id_repartidor SERIAL NOT NULL PRIMARY KEY,
-    nombre VARCHAR(255),
-    coordenadas GEOMETRY(POINT, 4326),
-    latitude FLOAT,
-    longitude FLOAT
 );
 
 END;

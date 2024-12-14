@@ -15,4 +15,5 @@ public class Orden {
     private String estado;
     private Long id_cliente;
     private Double total;
+    private Long id_repartidor;
 }

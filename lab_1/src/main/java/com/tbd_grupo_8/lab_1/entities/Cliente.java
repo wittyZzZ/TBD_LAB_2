@@ -15,4 +15,7 @@ public class Cliente {
     private String contrasena;
     private String telefono;
     private String rol;
+    private String coordenadas;
+    private double latitude;
+    private double longitude;
 }

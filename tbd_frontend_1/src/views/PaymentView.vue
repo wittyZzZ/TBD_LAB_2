@@ -111,6 +111,7 @@ export default {
             id_orden: ordenCreada.id_orden,
             carrito: carrito,
           };
+          
           //Se crean detalles
           const responseDetalles = await detalleOrdenService.create(payload);
           console.log("Detalles de la orden creados:", responseDetalles.data);
