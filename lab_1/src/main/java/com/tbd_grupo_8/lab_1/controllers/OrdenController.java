@@ -39,6 +39,7 @@ public class OrdenController {
             newOrden.setFecha_orden(LocalDateTime.now());
             newOrden.setEstado("Pagada"); // Encriptar la contraseña
             newOrden.setId_cliente(ordenDto.getId_cliente());
+            newOrden.setId_tienda(ordenDto.getId_tienda());
             newOrden.setTotal(ordenDto.getTotal());
             Orden saved = ordenService.save(newOrden);
 

@@ -104,78 +104,79 @@ export default {
         },
         // Obtiene órdenes alrededor de la tienda seleccionada
         fetchOrdersAroundStore() {
-        if (!this.selectedStoreId || this.radius <= 0) {
-            alert("Por favor, selecciona una tienda y un radio válido.");
-            return;
-        }
+            if (!this.selectedStoreId || this.radius <= 0) {
+                alert("Por favor, selecciona una tienda y un radio válido.");
+                return;
+            }
+            
+            // Se obtienen las ordenes enviadas desde la tienda indicada en el radio indicado 
 
-        // Se obtienen los clientes que ordenaron en el radio indicado (necesario para obtener las coordenadas)
+            // tiendaService
+            //     .getOrdersAroundStore(this.selectedStoreId, this.radius)
+            //     .then((response) => {
+            //     this.orders = response.data; // Asigna las órdenes obtenidas
+            //     })
+            //     .catch((error) => {
+            //     console.error("Error al obtener las órdenes:", error); // Maneja errores
+            //     });
 
-        // tiendaService
-        //     .getClientsByOrdersAroundStore(this.selectedStoreId, this.radius)
-        //     .then((response) => {
-        //     this.clients = response.data; // Asigna las órdenes obtenidas
-        //     })
-        //     .catch((error) => {
-        //     console.error("Error al obtener las órdenes:", error); // Maneja errores
-        //     });
+            // Se obtienen los clientes que ordenaron en el radio indicado (necesario para obtener las coordenadas)
 
-        // Se obtienen las ordenes en el radio indicado 
+            // tiendaService
+            //     .getClientsByOrdersAroundStore(this.selectedStoreId, this.radius)
+            //     .then((response) => {
+            //     this.clients = response.data; // Asigna las órdenes obtenidas
+            //     })
+            //     .catch((error) => {
+            //     console.error("Error al obtener las órdenes:", error); // Maneja errores
+            //     });
 
-        // tiendaService
-        //     .getOrdersAroundStore(this.selectedStoreId, this.radius)
-        //     .then((response) => {
-        //     this.orders = response.data; // Asigna las órdenes obtenidas
-        //     })
-        //     .catch((error) => {
-        //     console.error("Error al obtener las órdenes:", error); // Maneja errores
-        //     });
 
-        // Encuentra la tienda seleccionada en el arreglo de tiendas
-        const selectedStore = this.stores.find(
-            (store) => store.id_tienda === this.selectedStoreId
-        );
+            // Encuentra la tienda seleccionada en el arreglo de tiendas
+            const selectedStore = this.stores.find(
+                (store) => store.id_tienda === this.selectedStoreId
+            );
 
-        // Limpia los marcadores y circulos existentes en el mapa
-        this.$refs.map.clearMarkers();
-        this.$refs.map.circleGroup.clearLayers();
+            // Limpia los marcadores y circulos existentes en el mapa
+            this.$refs.map.clearMarkers();
+            this.$refs.map.circleGroup.clearLayers();
 
-        // Marca la tienda seleccionada en el mapa
-        this.$refs.map.putMarker(
-        selectedStore.nombre,
-        selectedStore.latitude,
-        selectedStore.longitude,
-        "store"
-        );
-
-        // Centra el mapa en la tienda seleccionada y ajusta el zoom
-        this.$refs.map.map.setView(
-            [selectedStore.latitude, selectedStore.longitude],
-            14 // Nivel de zoom (puedes ajustarlo según lo necesites)
-        );
-
-        // Dibuja el círculo alrededor de la tienda
-        const radiusInMeters = this.radius * 1000; // Convierte el radio de KM a metros
-        this.$refs.map.putCircle(
+            // Marca la tienda seleccionada en el mapa
+            this.$refs.map.putMarker(
+            selectedStore.nombre,
             selectedStore.latitude,
             selectedStore.longitude,
-            radiusInMeters
-        );
+            "store"
+            );
 
-        // Marca las ubicaciones de las órdenes en el mapa
-        this.orders.forEach((order) => {
-            // Encuentra el cliente asociado a la orden por id_cliente
-            const client = this.clients.find((c) => c.id_cliente === order.id_cliente);
-            if (client) {
-                // Marca la ubicación de la orden en el mapa usando las coordenadas del cliente
-                this.$refs.map.putMarker(
-                `Orden ${order.id_orden}`,
-                client.latitude,
-                client.longitude,
-                "order" // Usa el ícono específico para las órdenes
-                );
-            }
-        });
+            // Centra el mapa en la tienda seleccionada y ajusta el zoom
+            this.$refs.map.map.setView(
+                [selectedStore.latitude, selectedStore.longitude],
+                14 // Nivel de zoom (puedes ajustarlo según lo necesites)
+            );
+
+            // Dibuja el círculo alrededor de la tienda
+            const radiusInMeters = this.radius * 1000; // Convierte el radio de KM a metros
+            this.$refs.map.putCircle(
+                selectedStore.latitude,
+                selectedStore.longitude,
+                radiusInMeters
+            );
+
+            // Marca las ubicaciones de las órdenes en el mapa
+            this.orders.forEach((order) => {
+                // Encuentra el cliente asociado a la orden por id_cliente
+                const client = this.clients.find((c) => c.id_cliente === order.id_cliente);
+                if (client) {
+                    // Marca la ubicación de la orden en el mapa usando las coordenadas del cliente
+                    this.$refs.map.putMarker(
+                    `Orden ${order.id_orden}`,
+                    client.latitude,
+                    client.longitude,
+                    "order" // Usa el ícono específico para las órdenes
+                    );
+                }
+            });
         },
     },
 

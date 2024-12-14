@@ -72,8 +72,10 @@ CREATE TABLE IF NOT EXISTS ORDEN
     id_cliente integer,
     total decimal(10, 2),
     id_repartidor integer,
+    id_tienda integer,
     FOREIGN KEY(id_cliente) references CLIENTE(id_cliente),
-    FOREIGN KEY(id_repartidor) references REPARTIDOR(id_repartidor)
+    FOREIGN KEY(id_repartidor) references REPARTIDOR(id_repartidor),
+    FOREIGN KEY(id_tienda) references TIENDA(id_tienda)
 );
 
 CREATE TABLE IF NOT EXISTS DETALLE_ORDEN

@@ -15,14 +15,14 @@ public class OrdenRepository {
 
     public List<Orden> findAll() {
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery("SELECT id_orden, fecha_orden, estado, id_cliente, total FROM orden")
+            return conn.createQuery("SELECT id_orden, fecha_orden, estado, id_cliente, total, id_tienda FROM orden")
                     .executeAndFetch(Orden.class);
         }
     }
 
     public Orden findById(long id) {
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery("SELECT id_orden, fecha_orden, estado, id_cliente, total" +
+            return conn.createQuery("SELECT id_orden, fecha_orden, estado, id_cliente, total, id_tienda" +
                             " FROM orden WHERE id_orden = :id")
                     .addParameter("id", id)
                     .executeAndFetchFirst(Orden.class);
@@ -30,14 +30,15 @@ public class OrdenRepository {
     }
 
     public Orden save(Orden orden) {
-        String sql = "INSERT INTO orden (fecha_orden, estado, id_cliente, total) " +
-                "VALUES (:fecha_orden, :estado, :id_cliente, :total) RETURNING id_orden";
+        String sql = "INSERT INTO orden (fecha_orden, estado, id_cliente, total, id_tienda) " +
+                "VALUES (:fecha_orden, :estado, :id_cliente, :total, :id_tienda) RETURNING id_orden";
         try (Connection conn = sql2o.open()) {
             Long id = (long) conn.createQuery(sql, true)
                     .addParameter("fecha_orden", orden.getFecha_orden())
                     .addParameter("estado", orden.getEstado())
                     .addParameter("id_cliente", orden.getId_cliente())
                     .addParameter("total", orden.getTotal())
+                    .addParameter("id_tienda", orden.getId_tienda())
                     .executeUpdate()
                     .getKey(Long.class);
             orden.setId_orden(id);
@@ -51,13 +52,15 @@ public class OrdenRepository {
                     "fecha_orden = :fecha_orden," +
                     "estado = :estado," +
                     "id_cliente = :id_cliente," +
-                    "total = :total" +
+                    "total = :total," +
+                    "id_tienda = :id_tienda" +
                     " WHERE id_orden = :id_orden";
             conn.createQuery(sql)
                 .addParameter("fecha_orden", orden.getFecha_orden())
                 .addParameter("estado", orden.getEstado())
                 .addParameter("id_cliente", orden.getId_cliente())
                 .addParameter("total", orden.getTotal())
+                .addParameter("id_tienda", orden.getId_tienda())
                 .executeUpdate();
             return orden;
         }

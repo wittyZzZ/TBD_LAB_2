@@ -34,6 +34,18 @@
             <span class="text-h5 font-weight-bold">${{ this.orden.total }}</span>
           </div>
 
+          <div class="mt-5">
+            <v-select
+                  v-model="orden.id_tienda"
+                  :items="stores"
+                  item-title="nombre"
+                  item-value="id_tienda"
+                  label="Seleccionar tienda de origen"
+                  outlined
+                  />
+          </div>
+
+
           <!-- Botón de pagar -->
           <v-card-actions class="d-flex justify-center mt-4">
             <v-btn color="success" @click="pay" block>
@@ -52,6 +64,7 @@
 import { jwtDecode } from "jwt-decode";
 import ordenService from "@/services/orden.service";
 import detalleOrdenService from "@/services/detalleOrden.service";
+import tiendaService from "@/services/tienda.service";
 
 export default {
   inject: ["calcularSubtotal","vaciarCarrito"],
@@ -63,11 +76,23 @@ export default {
       orden: {
         id_cliente: null,
         total: null,
+        id_tienda: 1,
         },
+      stores: [],
     };
   },
 
   mounted() {
+
+    // Se obtienen las tiendas
+    tiendaService.getAll()
+    .then(response => {
+        this.stores = response.data; // Asignamos los datos de la respuesta
+    })
+    .catch(error => {
+        console.error('Error al obtener las tiendas:', error); // Manejamos errores
+    });
+
     const savedCart = JSON.parse(localStorage.getItem("carrito"));
     if (savedCart) {
       this.cart = savedCart;
@@ -85,6 +110,10 @@ export default {
 
   methods: {
     async pay() {
+
+      console.log("ID TIENDA DE ORDEN",this.orden.id_tienda);
+      console.log("TIENDAS",this.stores);
+
       if (this.cart.length === 0) {
         alert("El carrito está vacío. Agrega productos antes de pagar.");
         return;
