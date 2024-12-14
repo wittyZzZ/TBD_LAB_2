@@ -18,21 +18,21 @@ public class TiendaRepository {
 
     // Crear una nueva tienda
     public void create(Tienda tienda) {
-        String sql = "INSERT INTO tienda (nombre, direccion, coordenadas, latitude, longitude) " +
-                "VALUES (:nombre, :direccion, ST_SetSRID(ST_MakePoint(:longitud, :latitud), 4326), :latitud, :longitud)";
+        String sql = "INSERT INTO tienda (nombre, direccion, coordenadas) " +
+                "VALUES (:nombre, :direccion, ST_SetSRID(ST_MakePoint(:longitud, :latitud), 4326))";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("nombre", tienda.getNombre())
                     .addParameter("direccion", tienda.getDireccion())
-                    .addParameter("latitud", tienda.getLatitude())
                     .addParameter("longitud", tienda.getLongitude())
+                    .addParameter("latitud", tienda.getLatitude())
                     .executeUpdate();
         }
     }
 
     // Obtener todas las tiendas
     public List<Tienda> getAll() {
-        String sql = "SELECT id_tienda, nombre, direccion, ST_AsText(coordenadas) AS coordenadas, latitude, longitude FROM tienda";
+        String sql = "SELECT id_tienda, nombre, direccion, ST_X(coordenadas) AS longitude, ST_Y(coordenadas) AS latitude FROM tienda";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql)
                     .executeAndFetch((ResultSetHandler<Tienda>) resultSet -> {
@@ -40,9 +40,8 @@ public class TiendaRepository {
                         tienda.setId_tienda(resultSet.getLong("id_tienda"));
                         tienda.setNombre(resultSet.getString("nombre"));
                         tienda.setDireccion(resultSet.getString("direccion"));
-                        tienda.setCoordenadas(resultSet.getString("coordenadas"));
-                        tienda.setLatitude(resultSet.getDouble("latitude"));
                         tienda.setLongitude(resultSet.getDouble("longitude"));
+                        tienda.setLatitude(resultSet.getDouble("latitude"));
                         return tienda;
                     });
         } catch (Exception e) {
@@ -52,7 +51,7 @@ public class TiendaRepository {
 
     // Obtener una tienda por ID
     public Tienda getById(Long id) {
-        String sql = "SELECT id_tienda, nombre, direccion, ST_AsText(coordenadas) AS coordenadas, latitude, longitude " +
+        String sql = "SELECT id_tienda, nombre, direccion, ST_X(coordenadas) AS longitude, ST_Y(coordenadas) AS latitude " +
                 "FROM tienda WHERE id_tienda = :id";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql)
@@ -62,9 +61,8 @@ public class TiendaRepository {
                         tienda.setId_tienda(resultSet.getLong("id_tienda"));
                         tienda.setNombre(resultSet.getString("nombre"));
                         tienda.setDireccion(resultSet.getString("direccion"));
-                        tienda.setCoordenadas(resultSet.getString("coordenadas"));
-                        tienda.setLatitude(resultSet.getDouble("latitude"));
                         tienda.setLongitude(resultSet.getDouble("longitude"));
+                        tienda.setLatitude(resultSet.getDouble("latitude"));
                         return tienda;
                     });
         } catch (Exception e) {
@@ -75,15 +73,15 @@ public class TiendaRepository {
     // Actualizar una tienda
     public void update(Tienda tienda) {
         String sql = "UPDATE tienda SET nombre = :nombre, direccion = :direccion, " +
-                "coordenadas = ST_SetSRID(ST_MakePoint(:longitud, :latitud), 4326), " +
-                "latitude = :latitud, longitude = :longitud WHERE id_tienda = :id";
+                "coordenadas = ST_SetSRID(ST_MakePoint(:longitud, :latitud), 4326) " +
+                "WHERE id_tienda = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", tienda.getId_tienda())
                     .addParameter("nombre", tienda.getNombre())
                     .addParameter("direccion", tienda.getDireccion())
-                    .addParameter("latitud", tienda.getLatitude())
                     .addParameter("longitud", tienda.getLongitude())
+                    .addParameter("latitud", tienda.getLatitude())
                     .executeUpdate();
         }
     }

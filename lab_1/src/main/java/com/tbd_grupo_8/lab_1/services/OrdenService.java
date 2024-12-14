@@ -1,5 +1,6 @@
 package com.tbd_grupo_8.lab_1.services;
 
+import com.tbd_grupo_8.lab_1.dto.OrderWithinDTO;
 import com.tbd_grupo_8.lab_1.entities.Orden;
 import com.tbd_grupo_8.lab_1.repositories.OrdenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,9 @@ public class OrdenService {
             return ordenRepository.delete(id);
         }
         return false;
+    }
+
+    public List<OrderWithinDTO> getOrdersWithinRadius(int idTienda, double radiusKm){
+        return ordenRepository.getOrdersWithinRadius(idTienda, radiusKm);
     }
 }

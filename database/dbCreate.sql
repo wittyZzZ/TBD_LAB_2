@@ -42,26 +42,20 @@ CREATE TABLE IF NOT EXISTS CLIENTE
     contrasena varchar(100),
     telefono varchar(20),
     rol varchar(20),
-    coordenadas GEOMETRY(POINT, 4326),
-    latitude FLOAT,
-    longitude FLOAT
+    coordenadas GEOMETRY(POINT, 4326)
 );
 
 CREATE TABLE IF NOT EXISTS TIENDA (
     id_tienda SERIAL NOT NULL PRIMARY KEY,
     nombre VARCHAR(255),
     direccion VARCHAR(255),
-    coordenadas GEOMETRY(POINT, 4326),
-    latitude FLOAT,
-    longitude FLOAT
+    coordenadas GEOMETRY(POINT, 4326)
 );
 
 CREATE TABLE IF NOT EXISTS REPARTIDOR (
     id_repartidor SERIAL NOT NULL PRIMARY KEY,
     nombre VARCHAR(255),
-    coordenadas GEOMETRY(POINT, 4326),
-    latitude FLOAT,
-    longitude FLOAT
+    coordenadas GEOMETRY(POINT, 4326)
 );
 
 CREATE TABLE IF NOT EXISTS ORDEN
@@ -87,6 +81,12 @@ CREATE TABLE IF NOT EXISTS DETALLE_ORDEN
     precio_unitario decimal(10,2),
     FOREIGN KEY(id_orden) references ORDEN(id_orden),
     FOREIGN KEY(id_producto) references PRODUCTO(id_producto)
+);
+
+CREATE TABLE IF NOT EXISTS ZONA_REPARTO (
+    id_zona SERIAL NOT NULL PRIMARY KEY,
+    nombre VARCHAR(50),
+    poligono GEOMETRY(POLYGON, 4326)
 );
 
 -- Se crea una tabla para llevar registro de las llamadas de insercion, actualizacion o eliminacion realizadas en el backend

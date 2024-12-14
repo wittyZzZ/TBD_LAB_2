@@ -111,3 +111,34 @@ BEGIN
 END;
 $$;
 
+CREATE OR REPLACE FUNCTION get_orders_within_radius(id_tienda_input INTEGER, radius_km DOUBLE PRECISION)
+RETURNS TABLE (
+    id_orden INTEGER,
+    fecha_orden TIMESTAMP,
+    estado VARCHAR(50),
+    total DECIMAL(10, 2),
+    id_cliente INTEGER,
+    distancia_km DOUBLE PRECISION
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        o.id_orden,
+        o.fecha_orden,
+        o.estado,
+        o.total,
+        o.id_cliente,
+        ST_DistanceSphere(
+            c.coordenadas,
+            t.coordenadas
+        ) / 1000 AS distancia_km -- Convertir a kilómetros
+    FROM 
+        orden o
+    INNER JOIN cliente c ON o.id_cliente = c.id_cliente
+    INNER JOIN tienda t ON o.id_tienda = t.id_tienda
+    WHERE 
+        t.id_tienda = id_tienda_input
+        AND ST_DistanceSphere(c.coordenadas, t.coordenadas) <= radius_km * 1000; -- Distancia en metros
+END;
+$$ LANGUAGE plpgsql;
+

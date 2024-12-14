@@ -1,5 +1,6 @@
 package com.tbd_grupo_8.lab_1.repositories;
 
+import com.tbd_grupo_8.lab_1.dto.OrderWithinDTO;
 import com.tbd_grupo_8.lab_1.entities.Orden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -76,6 +77,17 @@ public class OrdenRepository {
         }
         catch (Exception e) {
             return false;
+        }
+    }
+
+    public List<OrderWithinDTO> getOrdersWithinRadius(int idTienda, double radiusKm) {
+        String sql = "SELECT * FROM get_orders_within_radius(:idTienda, :radiusKm)";
+
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("idTienda", idTienda)
+                    .addParameter("radiusKm", radiusKm)
+                    .executeAndFetch(OrderWithinDTO.class);
         }
     }
 }

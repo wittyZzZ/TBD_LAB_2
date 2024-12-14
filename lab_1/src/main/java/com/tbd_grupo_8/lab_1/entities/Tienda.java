@@ -13,7 +13,6 @@ public class Tienda {
     private Long id_tienda;
     private String nombre;
     private String direccion;
-    private String coordenadas;
     private double latitude;
     private double longitude;
 }

@@ -1,6 +1,7 @@
 package com.tbd_grupo_8.lab_1.controllers;
 
 import com.tbd_grupo_8.lab_1.dto.OrdenDto;
+import com.tbd_grupo_8.lab_1.dto.OrderWithinDTO;
 import com.tbd_grupo_8.lab_1.entities.Orden;
 import com.tbd_grupo_8.lab_1.services.OrdenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +67,13 @@ public class OrdenController {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/inradius")
+    public  ResponseEntity<List<OrderWithinDTO>> getOrdersWithinRadius(
+            @RequestParam int idTienda,
+            @RequestParam double radiusKm) {
+        List<OrderWithinDTO> ordenes = ordenService.getOrdersWithinRadius(idTienda, radiusKm);
+        return ResponseEntity.ok(ordenes);
     }
 }
