@@ -1,4 +1,4 @@
-# Laboratorio 1 - Bases de datos Avanzadas
+# Laboratorio 2 - Bases de datos Avanzadas
 ## Laboratorio desarrollado por el grupo n°8.
 ### Integrantes de grupo 8
 
@@ -17,6 +17,7 @@ El objetivo es diseñar y desarrollar un sistema de base de datos relacional par
    ## Base de datos
    * Postgres SQL versión 16
    * PgAdmin versión 4
+   * PostGIS 3.5 Bundle for PostgreSQL (add-on)
 
    ## Backend
    * IntelliJ IDEA Ultimate
@@ -33,7 +34,7 @@ Esta guía ayudará a configurar el entorno de desarrollo para trabajar con Inte
 
 ## 1. Clonar el repositorio
 
-git clone https://github.com/gonzaloArevalo/LAB_TBD
+git clone https://github.com/wittyZzZ/TBD_LAB_2
 
 ## 2. Instalación de Node.js
 
@@ -58,6 +59,25 @@ git clone https://github.com/gonzaloArevalo/LAB_TBD
 1. Descargar pgAdmin desde el sitio web oficial: [Descargar pgAdmin](https://www.pgadmin.org/download/).
 
 2. Instalar pgAdmin siguiendo las instrucciones para el sistema operativo.
+
+### 3.3 Instalación de PostGIS 3.5
+
+1. Abrir el menú principal de Windows, buscar el grupo PostgreSQL y dar click en Aplicación Stack Buillder (Gestor de paquetes de Postgresql), seleccionar la base de datos (PostgreSQL 16 on port 5432) y presionar el botón **Next**
+
+2. Buscar y expandir **Spacial Extensions**, marcar la casilla PostGis 3.4 Bundle for PostgreSQL, presionar el botón **Next** para que el Add-on se instale y finalizar la instalación.
+
+<details>
+   <summary>Ver más detalles</summary>
+
+   Buscar y seleccionar Aplicación Stack Buillder
+   ![StackBuilder](img/StackBuilder.png)
+
+   Seleccionar la base de datos
+   ![Server](img/SeleccionaServer.png)
+
+   Seleccionar **Spacial Extensions**
+   ![PostGIG](img/PostGIS.png)
+</details>
 
 ## 4. Crear base de datos y cargar información
 
@@ -115,7 +135,7 @@ Después de ejecutar el script, verificar que los datos se hayan cargado correct
 
 2. Ejecutar "mvn clean install" para instalar las dependencias necesarias descritas en el archivo pom.xml
 
-3. Ejecutar directamente backend desde IntelliJ IDEA  
+3. Ejecutar directamente backend desde IntelliJ IDEA
 
 ## 6. Revisión de código y Ejecución de Frontend:
 
@@ -124,7 +144,7 @@ Después de ejecutar el script, verificar que los datos se hayan cargado correct
 2. Abrir una terminal en VSC y ejecutar los siguientes comandos:
 
    * Ejecutar "npm install" para instalar las dependencias necesarias descritas en el archivo package.json
-  
+
    * Ejecutar "npm run serve" para iniciar el servidor de desarrollo de Vue.js.
 
 3. Abrir el navegador web y navegar a la dirección http://localhost:5173/ para ver la aplicación de Vue.js en funcionamiento.
