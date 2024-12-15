@@ -12,14 +12,14 @@
           class="elevation-1"
           dense
         >
-        <template #item.id_delivery="{ item }">
-          {{ getRepartidorName(item.id_delivery) }}
+        <template #item.id_repartidor="{ item }">
+          {{ getRepartidorName(item.id_repartidor) }}
         </template>
           <template #top>
             <v-toolbar flat>
               <v-toolbar-title>Órdenes</v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn @click="openDialog()" color="primary">Nueva Orden</v-btn>
+              <!-- <v-btn @click="openDialog()" color="primary">Nueva Orden</v-btn> -->
             </v-toolbar>
           </template>
           <template #item.acciones="{ item }">
@@ -89,9 +89,9 @@
                 required
               ></v-text-field>
               <v-select
-                v-model="form.id_delivery"
+                v-model="form.id_repartidor"
                 :items="repartidores"
-                item-text="nombre"
+                item-title="nombre"
                 item-value="id_repartidor"
                 label="Repartidor"
                 required
@@ -115,32 +115,15 @@
   export default {
     data() {
       return {
-        //ordenes: [],
-        //repartidores: [],
-        /*headers: [
-            { text: "ID Orden", value: "id_orden" },
-            { text: "Fecha", value: "fecha_orden" },
-            { text: "Estado", value: "estado" },
-            { text: "ID Cliente", value: "id_cliente" },
-            { text: "Total", value: "total" },
-            { text: "Acciones", value: "acciones", sortable: false },
-        ] */
-        ordenes: [
-          { id_orden: 1, fecha_orden: "2024-12-10", estado: "Pendiente", id_cliente: 101, total: 1200.5, id_delivery: 1 },
-          { id_orden: 2, fecha_orden: "2024-12-11", estado: "Completada", id_cliente: 102, total: 800.0, id_delivery: 2 },
-        ],
-        repartidores: [
-          { id_repartidor: 1, nombre: "Juan Pérez" },
-          { id_repartidor: 2, nombre: "María López" },
-          { id_repartidor: 3, nombre: "Carlos Ruiz" },
-        ],
+        ordenes: [],
+        repartidores: [],
         headers: [
           { text: "ID Orden", value: "id_orden" },
           { text: "Fecha", value: "fecha_orden" },
           { text: "Estado", value: "estado" },
           { text: "ID Cliente", value: "id_cliente" },
           { text: "Total", value: "total" },
-          { text: "Repartidor", value: "id_delivery" },
+          { text: "Repartidor", value: "id_repartidor" },
           { text: "Acciones", value: "acciones", sortable: false },
         ],
         dialog: false,
@@ -150,19 +133,24 @@
           estado: "",
           id_cliente: null,
           total: null,
-          id_delivery: null,
+          id_repartidor: null,
+          id_tienda: null,
         },
         formTitle: "",
         valid: false,
         datePicker: false,
       };
     },
-    /*async created() {
+    async created() {
       await this.fetchOrdenes();
-      await this.repartidores();
+      await this.fetchRepartidores();
     },
  
     methods: {
+      getRepartidorName(id) {
+        const rep = this.repartidores.find(r => r.id_repartidor === id);
+        return rep ? rep.nombre : 'Sin asignar';
+      },
       async fetchOrdenes() {
         try {
           const response = await ordenService.getAll();
@@ -225,8 +213,26 @@
         this.dialog = false;
       },
     },
-    */
-    methods: {
+   
+    /*headers: [
+            { text: "ID Orden", value: "id_orden" },
+            { text: "Fecha", value: "fecha_orden" },
+            { text: "Estado", value: "estado" },
+            { text: "ID Cliente", value: "id_cliente" },
+            { text: "Total", value: "total" },
+            { text: "Repartidor", value: "id_delivery" },
+            { text: "Acciones", value: "acciones", sortable: false },
+        ] */
+        /* ordenes: [
+          { id_orden: 1, fecha_orden: "2024-12-10", estado: "Pendiente", id_cliente: 101, total: 1200.5, id_delivery: 1 },
+          { id_orden: 2, fecha_orden: "2024-12-11", estado: "Completada", id_cliente: 102, total: 800.0, id_delivery: 2 },
+        ],
+        repartidores: [
+          { id_repartidor: 1, nombre: "Juan Pérez" },
+          { id_repartidor: 2, nombre: "María López" },
+          { id_repartidor: 3, nombre: "Carlos Ruiz" },
+        ], */
+    /* methods: {
       getRepartidorName(id) {
         const rep = this.repartidores.find(r => r.id_repartidor === id);
         return rep ? rep.nombre : 'Sin asignar';
@@ -268,6 +274,7 @@
         this.dialog = false;
       },
     },
+  }; */
   };
   </script>
   

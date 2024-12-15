@@ -28,6 +28,7 @@
           { text: "Perfil", icon: "mdi-account", route: "/client" },
           { text: "Ordenes en radio de almacén", icon: "mdi-account", route: "/orderstore"},
           { text: "Repartidores en zona de reparto", icon: "mdi-account", route: "/deliveryzone"},
+          { text: "Repartidores en 30 KM", icon: "mdi-map-marker-multiple", route: "delivery30"},
           // Agrega más opciones de menú según tus necesidades
         ],
       };

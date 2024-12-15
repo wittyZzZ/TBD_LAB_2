@@ -9,15 +9,21 @@ const getById = (id) => {
 };
 
 const create = (repartidor) => {
-  return httpClient.post("/api/repartidor/guardar", repartidor);
+  return httpClient.post("/api/repartidor/", repartidor);
 };
 
 const update = (repartidor) => {
-  return httpClient.put("/api/repartidor/actualizar", repartidor);
+  return httpClient.put("/api/repartidor/", repartidor);
 };
 
 const remove = (id) => {
   return httpClient.delete(`/api/repartidor/${id}`);
 };
 
-export default { getAll, getById, create, update, remove };
+const getInRadius = (id_tienda_input, radius_km) => {
+  return httpClient.get("/api/repartidor/inradius", {
+    params: { id_tienda_input, radius_km }
+  });
+};
+
+export default { getAll, getById, create, update, remove , getInRadius};
