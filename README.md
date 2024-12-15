@@ -151,10 +151,8 @@ Después de ejecutar el script, verificar que los datos se hayan cargado correct
 
 ## 7. Funcionalidades especificas a desarrollar
 
-1. Crear un trigger que marque un producto como "agotado" automáticamente cuando su stock llegue a 0 tras una venta.
+1. Mostrar las órdenes que han sido enviadas a clientes dentro de un radio de 10 km desde un almacén específico.
 
-2. Crear un trigger para registrar en una tabla de auditoría cada vez que se actualice el precio de un producto.
+2. Listar los repartidores que han entregado pedidos en una zona específica definida por un polígono (zona de reparto).
 
-## 8. Consultas SQL especificas
-
-1. ¿Cuál es el promedio de productos diferentes comprados por cliente en las órdenes en las que se gastó más de $500?
+3. Determinar cuántos repartidores operan dentro de un área de 30 km alrededor de la tienda principal.
