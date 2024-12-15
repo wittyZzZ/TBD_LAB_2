@@ -55,7 +55,7 @@ public class OrdenRepository {
                     "estado = :estado," +
                     "id_cliente = :id_cliente," +
                     "total = :total," +
-                    "id_tienda = :id_tienda" +
+                    "id_tienda = :id_tienda," +
                     "id_repartidor = :id_repartidor" +
                     " WHERE id_orden = :id_orden";
             conn.createQuery(sql)
@@ -65,6 +65,7 @@ public class OrdenRepository {
                 .addParameter("total", orden.getTotal())
                 .addParameter("id_tienda", orden.getId_tienda())
                 .addParameter("id_repartidor", orden.getId_repartidor())
+                .addParameter("id_orden", orden.getId_orden())
                 .executeUpdate();
             return orden;
         }
