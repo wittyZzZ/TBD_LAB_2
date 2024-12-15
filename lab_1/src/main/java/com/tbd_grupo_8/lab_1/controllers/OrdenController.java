@@ -43,7 +43,7 @@ public class OrdenController {
             String formattedDate = LocalDateTime.now().format(formatter);
 
             newOrden.setFecha_orden(formattedDate); // Asignar la fecha como String
-            newOrden.setEstado("Pagada"); // Encriptar la contraseña
+            newOrden.setEstado("Pagada");
             newOrden.setId_cliente(ordenDto.getId_cliente());
             newOrden.setId_tienda(ordenDto.getId_tienda());
             newOrden.setTotal(ordenDto.getTotal());

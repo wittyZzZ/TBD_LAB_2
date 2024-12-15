@@ -115,13 +115,13 @@ $$;
 CREATE OR REPLACE FUNCTION get_orders_within_radius(id_tienda_input INTEGER, radius_km DOUBLE PRECISION)
 RETURNS TABLE (
     id_orden INTEGER,
-    fecha_orden VARCHAR(20),
+    fecha_orden TEXT,
     estado VARCHAR(50),
     total DECIMAL(10, 2),
     id_cliente INTEGER,
     distancia_km DOUBLE PRECISION,
-    latitude DOUBLE PRECISION, -- Agregar latitud del cliente
-    longitude DOUBLE PRECISION -- Agregar longitud del cliente
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION 
 ) AS $$
 BEGIN
     RETURN QUERY
@@ -134,16 +134,16 @@ BEGIN
         ST_DistanceSphere(
             c.coordenadas,
             t.coordenadas
-        ) / 1000 AS distancia_km, -- Convertir a kilómetros
-        ST_Y(c.coordenadas) AS latitude, -- Extraer latitud del punto del cliente
-        ST_X(c.coordenadas) AS longitude -- Extraer longitud del punto del cliente
+        ) / 1000 AS distancia_km, 
+        ST_Y(c.coordenadas) AS latitude, 
+        ST_X(c.coordenadas) AS longitude 
     FROM 
         orden o
     INNER JOIN cliente c ON o.id_cliente = c.id_cliente
     INNER JOIN tienda t ON o.id_tienda = t.id_tienda
     WHERE 
         t.id_tienda = id_tienda_input
-        AND ST_DistanceSphere(c.coordenadas, t.coordenadas) <= radius_km * 1000; -- Distancia en metros
+        AND ST_DistanceSphere(c.coordenadas, t.coordenadas) <= radius_km * 1000;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -153,9 +153,9 @@ RETURNS TABLE (
     id_repartidor INTEGER,
     nombre VARCHAR(255),
     id_orden INTEGER,
-    fecha_orden VARCHAR(20),
-    latitude DOUBLE PRECISION, -- Agregar latitud del cliente
-    longitude DOUBLE PRECISION -- Agregar longitud del cliente
+    fecha_orden TEXT,
+    latitude DOUBLE PRECISION, 
+    longitude DOUBLE PRECISION
 ) AS $$
 BEGIN
     RETURN QUERY
@@ -164,8 +164,8 @@ BEGIN
         r.nombre,
         o.id_orden,
         o.fecha_orden,
-        ST_Y(c.coordenadas) AS latitude, -- Extraer latitud del punto del cliente
-        ST_X(c.coordenadas) AS longitude -- Extraer longitud del punto del cliente
+        ST_Y(c.coordenadas) AS latitude,
+        ST_X(c.coordenadas) AS longitude 
     FROM 
         orden o
     INNER JOIN repartidor r ON o.id_repartidor = r.id_repartidor
@@ -190,8 +190,8 @@ BEGIN
     SELECT 
         r.id_repartidor,
         r.nombre,
-        ST_Y(r.coordenadas) AS latitude, -- Obtiene la latitud de las coordenadas del repartidor
-        ST_X(r.coordenadas) AS longitude -- Obtiene la longitud de las coordenadas del repartidor
+        ST_Y(r.coordenadas) AS latitude,
+        ST_X(r.coordenadas) AS longitude
     FROM 
         repartidor r
     INNER JOIN tienda t ON ST_DistanceSphere(r.coordenadas, t.coordenadas) <= radius_km * 1000
