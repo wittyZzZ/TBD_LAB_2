@@ -75,7 +75,7 @@ public class OrdenController {
     }
 
     @GetMapping("/inradius")
-    public  ResponseEntity<List<OrderWithinDTO>> getOrdersWithinRadius(
+    public ResponseEntity<List<OrderWithinDTO>> getOrdersWithinRadius(
             @RequestParam int idTienda,
             @RequestParam double radiusKm) {
         List<OrderWithinDTO> ordenes = ordenService.getOrdersWithinRadius(idTienda, radiusKm);

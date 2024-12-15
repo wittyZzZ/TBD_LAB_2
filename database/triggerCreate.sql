@@ -177,18 +177,25 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Funcion 24 id_tienda = 1 y radius 30 para realizar lo pedido
-CREATE OR REPLACE FUNCTION get_repartidores_count_within_radius(id_tienda_input INTEGER, radius_km DOUBLE PRECISION) 
-RETURNS TABLE (cantidad_repartidores BIGINT) AS $$
+-- Procedimiento almacenado para obtener repartidores dentro de un radio específico desde una tienda
+CREATE OR REPLACE FUNCTION get_repartidores_within_radius(id_tienda_input INTEGER, radius_km DOUBLE PRECISION) 
+RETURNS TABLE (
+    id_repartidor INTEGER,
+    nombre VARCHAR(255),
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION
+) AS $$
 BEGIN
     RETURN QUERY
-    SELECT COUNT(DISTINCT r.id_repartidor) AS cantidad_repartidores
+    SELECT 
+        r.id_repartidor,
+        r.nombre,
+        ST_Y(r.coordenadas) AS latitude, -- Obtiene la latitud de las coordenadas del repartidor
+        ST_X(r.coordenadas) AS longitude -- Obtiene la longitud de las coordenadas del repartidor
     FROM 
-        orden o
-    INNER JOIN repartidor r ON o.id_repartidor = r.id_repartidor
-    INNER JOIN cliente c ON o.id_cliente = c.id_cliente
-    INNER JOIN tienda t ON o.id_tienda = t.id_tienda
+        repartidor r
+    INNER JOIN tienda t ON ST_DistanceSphere(r.coordenadas, t.coordenadas) <= radius_km * 1000
     WHERE 
-        t.id_tienda = id_tienda_input
-        AND ST_DistanceSphere(c.coordenadas, t.coordenadas) <= radius_km * 1000;
+        t.id_tienda = id_tienda_input;
 END;
 $$ LANGUAGE plpgsql;

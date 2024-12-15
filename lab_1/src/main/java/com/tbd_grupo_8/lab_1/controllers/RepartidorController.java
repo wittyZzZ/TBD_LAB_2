@@ -3,6 +3,7 @@ package com.tbd_grupo_8.lab_1.controllers;
 import com.tbd_grupo_8.lab_1.entities.Repartidor;
 import com.tbd_grupo_8.lab_1.services.RepartidorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,4 +41,13 @@ public class RepartidorController {
         repartidorService.delete(id);
         return "Repartidor eliminado";
     }
+
+    @GetMapping("/inradius")
+    public ResponseEntity<List<Repartidor>> getRepartidoresWithinradius(
+            @RequestParam int id_tienda_input,
+            @RequestParam double radius_km) {
+        List<Repartidor> repartidores = repartidorService.getRepartidoresWithinradius(id_tienda_input,radius_km);
+        return ResponseEntity.ok(repartidores);
+    }
+
 }

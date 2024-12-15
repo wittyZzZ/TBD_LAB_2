@@ -32,4 +32,8 @@ public class RepartidorService {
         repartidorRepository.delete(id);
     }
 
+    public List<Repartidor> getRepartidoresWithinradius(int id_tienda_input, double radius_km) {
+        return repartidorRepository.getRepartidoresWithinradius(id_tienda_input,radius_km);
+    }
+
 }

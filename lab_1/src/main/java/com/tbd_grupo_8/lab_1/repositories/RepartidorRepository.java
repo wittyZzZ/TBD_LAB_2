@@ -1,5 +1,6 @@
 package com.tbd_grupo_8.lab_1.repositories;
 
+import com.tbd_grupo_8.lab_1.dto.OrderWithinDTO;
 import com.tbd_grupo_8.lab_1.entities.Repartidor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -88,6 +89,16 @@ public class RepartidorRepository {
             con.createQuery(sql)
                     .addParameter("id", id)
                     .executeUpdate();
+        }
+    }
+
+    public List<Repartidor> getRepartidoresWithinradius(int id_tienda_input, double radius_km) {
+        String sql = "SELECT * FROM get_repartidores_within_radius(:id_tienda_input, :radius_km)";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id_tienda_input", id_tienda_input)
+                    .addParameter("radius_km", radius_km)
+                    .executeAndFetch(Repartidor.class);
         }
     }
 }
