@@ -10,7 +10,7 @@
 
 # Descripción del proyecto
 
-El objetivo es diseñar y desarrollar un sistema de base de datos relacional para un E-commerce, donde se gestionen productos, órdenes de compra, clientes y el inventario en tiempo real. Garantizando que cuando un cliente realice una compra, el stock de productos se actualice automáticamente, y si el stock de un producto llega a 0, este se marque como “agotado”.
+El objetivo es diseñar y desarrollar un sistema para un E-commerce, donde se gestionen productos, órdenes de compra, clientes, inventario en tiempo real, zonas de reparto, tiendas o sucursales y repartidores. Garantizando que cuando un cliente realice una compra, el stock de productos se actualice automáticamente, y si el stock de un producto llega a 0, este se marque como “agotado”. Además que se le asigne un repartidor al cliente según la tienda o sucursal. Además de poder hacer un seguimiento mediante consultas, sobre la cercanía de clientes, repartos y pedidos respecto a una tienda específica.
 
 # Recursos utilizados para el desarrollo del proyecto:
 
