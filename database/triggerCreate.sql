@@ -151,17 +151,21 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION get_delivery_in_polygon(id_poligono INTEGER)
 RETURNS TABLE (
     id_repartidor INTEGER,
-    nombre_repartidor VARCHAR(255),
+    nombre VARCHAR(255),
     id_orden INTEGER,
-    fecha_orden VARCHAR(20)
+    fecha_orden VARCHAR(20),
+    latitude DOUBLE PRECISION, -- Agregar latitud del cliente
+    longitude DOUBLE PRECISION -- Agregar longitud del cliente
 ) AS $$
 BEGIN
     RETURN QUERY
     SELECT 
         r.id_repartidor,
-        r.nombre AS nombre_repartidor,
+        r.nombre,
         o.id_orden,
-        o.fecha_orden
+        o.fecha_orden,
+        ST_Y(c.coordenadas) AS latitude, -- Extraer latitud del punto del cliente
+        ST_X(c.coordenadas) AS longitude -- Extraer longitud del punto del cliente
     FROM 
         orden o
     INNER JOIN repartidor r ON o.id_repartidor = r.id_repartidor
