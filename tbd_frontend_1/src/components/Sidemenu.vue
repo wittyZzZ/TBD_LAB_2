@@ -23,9 +23,9 @@
         menuItems: [
           { text: "Inicio", icon: "mdi-home", route: "/" },
           { text: "Productos", icon: "mdi-package-variant", route: "/products" },
-          { text: "Categorias", icon: "mdi-checkbox-multiple-blank", route: ""},
+          //{ text: "Categorias", icon: "mdi-checkbox-multiple-blank", route: ""},
           { text: "Ordenes", icon: "mdi-order-bool-descending-variant", route: "/orders"},
-          { text: "Perfil", icon: "mdi-account", route: "/client" },
+          //{ text: "Perfil", icon: "mdi-account", route: "/client" },
           { text: "Ordenes en radio de almacén", icon: "mdi-account", route: "/orderstore"},
           { text: "Repartidores en zona de reparto", icon: "mdi-account", route: "/deliveryzone"},
           { text: "Repartidores en 30 KM", icon: "mdi-map-marker-multiple", route: "delivery30"},
