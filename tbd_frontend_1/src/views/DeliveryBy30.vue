@@ -1,8 +1,12 @@
 <template>
-    <v-container class="mt-15">
-        <Map class="mt-15" ref="map" />
 
-        <v-row class="mt-4 d-flex justify-center">
+    <v-container class="mt-15">
+
+        <div class="mt-5 text-h4 font-weight-bold">Repartidores Operantes Dentro de Radio de Tienda</div>
+        <v-divider class="mt-5"></v-divider>
+        <Map class="mt-10" ref="map" />
+
+        <v-row class="my-4 d-flex justify-center">
             <v-col cols="12" md="6">
                 <!-- Selector de Tienda -->
                 <v-select
@@ -28,6 +32,45 @@
                 <v-btn color="primary" block size="large" @click="fetchNearbyRepartidores">
                     Mostrar repartidores en radio
                 </v-btn>
+            </v-col>
+
+            <v-divider class="mt-3"></v-divider>
+
+            <v-col v-if="repartidores.length > 0" cols="12">
+
+                <div class="my-5 text-h5 font-weight-bold">Repartidores</div>
+
+                <v-table>
+                    <thead>
+                    <tr>
+                        <th class="text-left">
+                        ID de Repartidor
+                        </th>
+                        <th class="text-left">
+                        Nombre
+                        </th>
+                        <th class="text-left">
+                        Latitud
+                        </th>
+                        <th class="text-left">
+                        Longitud
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr
+                        v-for="repartidor in repartidores"
+                        :key="repartidor.id_repartidor"
+                    >
+                        <td>{{ repartidor.id_repartidor }}</td>
+                        <td>{{ repartidor.nombre }}</td>
+                        <td>{{ repartidor.latitude }}</td>
+                        <td>{{ repartidor.longitude }}</td>
+
+                    </tr>
+                    </tbody>
+                </v-table>
+                
             </v-col>
         </v-row>
     </v-container>

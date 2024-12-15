@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS REPARTIDOR (
 CREATE TABLE IF NOT EXISTS ORDEN
 (
     id_orden serial NOT NULL PRIMARY KEY,
-    fecha_orden varchar(20),
+    fecha_orden TEXT,
     estado varchar(50),
     id_cliente integer,
     total decimal(10, 2),

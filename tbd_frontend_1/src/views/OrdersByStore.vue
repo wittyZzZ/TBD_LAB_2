@@ -10,32 +10,27 @@
             <v-col cols="12" md="6">
                 <!-- Selector de Tienda -->
                 <v-select
-                v-model="selectedStoreId"
-                :items="stores"
-                item-title="nombre"
-                item-value="id_tienda"
-                label="Seleccionar tienda"
-                outlined
+                    v-model="selectedStoreId"
+                    :items="stores"
+                    item-title="nombre"
+                    item-value="id_tienda"
+                    label="Seleccionar tienda"
+                    outlined
                 />
             </v-col>
             <v-col cols="12" md="6">
                 <!-- Input para Radio -->
                 <v-text-field
-                v-model="radius"
-                type="number"
-                label="Radio en KM"
-                outlined
+                    v-model="radius"
+                    type="number"
+                    label="Radio en KM"
+                    outlined
                 />
             </v-col>
             <v-col cols="4">
                 <!-- Botón -->
-                <v-btn
-                color="primary"
-                block
-                size="large"
-                @click="fetchOrdersAroundStore"
-                >
-                Mostrar órdenes alrededor de tienda
+                <v-btn color="primary" block size="large" @click="fetchOrdersAroundStore">
+                    Mostrar órdenes alrededor de tienda
                 </v-btn>
             </v-col>
 

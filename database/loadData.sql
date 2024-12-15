@@ -72,7 +72,8 @@ INSERT INTO CLIENTE (username, direccion, email, contrasena, telefono, rol, coor
 ('user_17', 'Av. Amanecer 60, Renca', 'gloria.vega@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-7893', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.7280, -33.4020), 4326)),
 ('user_18', 'Calle Luna 67, Ñuñoa', 'tomas.rivera@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-1568', 'USER', ST_SetSRID(ST_MakePoint(-70.6170, -33.4640), 4326)),
 ('user_19', 'Av. Principal 5, Maipú', 'isabel.romero@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-8947', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.7500, -33.5000), 4326)),
-('user_20', 'Calle Real 19, Peñalolén', 'vicente.navarro@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3256', 'USER', ST_SetSRID(ST_MakePoint(-70.5450, -33.4920), 4326));
+('user_20', 'Calle Real 19, Peñalolén', 'vicente.navarro@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3256', 'USER', ST_SetSRID(ST_MakePoint(-70.5450, -33.4920), 4326)),
+('user_21', '24 Nte., Viña del Mar', 'vicente.peralta@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3256', 'USER', ST_SetSRID(ST_MakePoint(-71.54226306197091, -33.002067847491986), 4326));
 
 -- Inserción de datos en la tabla Tienda
 INSERT INTO TIENDA (nombre, direccion, coordenadas) 
@@ -80,7 +81,6 @@ VALUES ('Tienda Costanera Center', 'Av. Andres Bello 2425, Providencia, Santiago
 ('Tienda La Reina', 'Av. Blest Gana 5962, La Reina, Santiago', ST_SetSRID(ST_MakePoint(-70.5685, -33.4553), 4326)),
 ('Tienda Las Nieves', 'Los Mallines 1996, Puente Alto, Santiago', ST_SetSRID(ST_MakePoint(-70.57602256706053, -33.59415557033961), 4326)),
 ('Tienda Maipú', 'Rafael Frontaura 5-99, Maipú, Santiago', ST_SetSRID(ST_MakePoint(-70.75585819880487, -33.514533912551755), 4326)),
-('Tienda La Reina', 'Av. Blest Gana 5962, La Reina, Santiago', ST_SetSRID(ST_MakePoint(-70.5685, -33.4553), 4326)),
 ('TecTec - Tecnología y Computación','Oficina Contable - Ventas Solo en Nuestra Web - Moneda 812, Santiago, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.64745903544836, -33.44157280323984), 4326)),
 ('ABCDIN Estado', 'Paseo Estado 73, 8320256 Santiago, Región Metropolitana',ST_SetSRID(ST_MakePoint(-70.64899653193504, -33.44174084107714), 4326)),
 ('Tecnodetodo', 'Av. Domingo Sta. María 3584, 8640722 Renca, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.69452693082134, -33.40700876892923), 4326)),
@@ -93,16 +93,20 @@ INSERT INTO REPARTIDOR (nombre, coordenadas)
 VALUES ('Tomás Soto', ST_SetSRID(ST_MakePoint(-70.60836609, -33.50862745), 4326)),
 ('Carlos Barra', ST_SetSRID(ST_MakePoint(-70.6453284199841, -33.45860089018716), 4326)),
 ('Benjamín Tapia', ST_SetSRID(ST_MakePoint(-70.7103335299697, -33.50162765386649), 4326)),
-('Andrés Garrido', ST_SetSRID(ST_MakePoint(-70.57405727196812, -33.54751053310172), 4326));
+('Matías Silva', ST_SetSRID(ST_MakePoint(-70.76772848894939, -33.44778595432466), 4326)),
+('Andrés Garrido', ST_SetSRID(ST_MakePoint(-71.54492236676212, -33.02332421999087), 4326));
 
 -- Inserción de datos en la tabla Orden
 INSERT INTO ORDEN (fecha_orden, estado, id_cliente, total, id_repartidor, id_tienda) VALUES
-('15/12/23 12:34:56', 'Pagada', 1, 24000.00, null, 1),
-('15/12/23 14:45:30', 'Enviada', 2, 30000.00, 1, 2),
-('15/12/23 16:50:00', 'Completada', 3, 15000.00, 2, 1);
+(TO_CHAR(CURRENT_TIMESTAMP, 'DD/MM/YY HH24:MI:SS'), 'Pagada', 1, 24000.00, null, 1),
+(TO_CHAR(CURRENT_TIMESTAMP, 'DD/MM/YY HH24:MI:SS'), 'Enviada', 2, 30000.00, 1, 2),
+(TO_CHAR(CURRENT_TIMESTAMP, 'DD/MM/YY HH24:MI:SS'), 'Enviada', 21, 21000.00, 5, 5),
+(TO_CHAR(CURRENT_TIMESTAMP, 'DD/MM/YY HH24:MI:SS'), 'Enviada', 12, 3000.00, 3, 6),
+(TO_CHAR(CURRENT_TIMESTAMP, 'DD/MM/YY HH24:MI:SS'), 'Completada', 3, 15000.00, 2, 1);
 
 -- Inserción de datos en la tabla Poligono
 INSERT INTO ZONA_REPARTO (nombre, poligono)
 VALUES ('Poligono Centro', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.68965994719805 -33.419622713280866, -70.63343880436038 -33.436767034525424, -70.60684528230406 -33.41658069751892, -70.58021703839037 -33.48742592788876, -70.69165479386703 -33.49488968909503, -70.68965994719805 -33.419622713280866)')), 4326)),
 ('Poligono Puente Alto', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.55608391865024 -33.54342781519428, -70.6196885668074 -33.54201144195442, -70.59856793794873 -33.62695273425572, -70.53423499229359 -33.6061296330255, -70.55608391865024 -33.54342781519428)')), 4326)),
+('Poligono Viña del Mar', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-71.54938886905275 -33.000659557745905, -71.50974757352077 -33.006616685862916, -71.50745616915475 -33.04504009861507, -71.56817838485404 -33.023717172932265, -71.54938886905275 -33.000659557745905)')), 4326)),
 ('Poligono Santiago', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.76233181623087 -33.383944888168216, -70.66545818578015 -33.36756690642463, -70.60721514415948 -33.38642613149192, -70.54203392164673 -33.329007657048415, -70.49355731556004 -33.33735851993195, -70.53503729769275 -33.609990046732385, -70.7064545773473 -33.644944725790786, -70.86187957211999 -33.5750211910383, -70.76233181623087 -33.383944888168216)')), 4326));
