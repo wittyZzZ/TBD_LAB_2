@@ -115,11 +115,13 @@ $$;
 CREATE OR REPLACE FUNCTION get_orders_within_radius(id_tienda_input INTEGER, radius_km DOUBLE PRECISION)
 RETURNS TABLE (
     id_orden INTEGER,
-    fecha_orden TIMESTAMP,
+    fecha_orden VARCHAR(20),
     estado VARCHAR(50),
     total DECIMAL(10, 2),
     id_cliente INTEGER,
-    distancia_km DOUBLE PRECISION
+    distancia_km DOUBLE PRECISION,
+    latitude DOUBLE PRECISION, -- Agregar latitud del cliente
+    longitude DOUBLE PRECISION -- Agregar longitud del cliente
 ) AS $$
 BEGIN
     RETURN QUERY
@@ -132,7 +134,9 @@ BEGIN
         ST_DistanceSphere(
             c.coordenadas,
             t.coordenadas
-        ) / 1000 AS distancia_km -- Convertir a kilómetros
+        ) / 1000 AS distancia_km, -- Convertir a kilómetros
+        ST_Y(c.coordenadas) AS latitude, -- Extraer latitud del punto del cliente
+        ST_X(c.coordenadas) AS longitude -- Extraer longitud del punto del cliente
     FROM 
         orden o
     INNER JOIN cliente c ON o.id_cliente = c.id_cliente
@@ -149,7 +153,7 @@ RETURNS TABLE (
     id_repartidor INTEGER,
     nombre_repartidor VARCHAR(255),
     id_orden INTEGER,
-    fecha_orden TIMESTAMP
+    fecha_orden VARCHAR(20)
 ) AS $$
 BEGIN
     RETURN QUERY

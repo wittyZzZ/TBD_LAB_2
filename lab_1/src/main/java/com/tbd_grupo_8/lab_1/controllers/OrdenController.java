@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -37,7 +37,12 @@ public class OrdenController {
     public ResponseEntity<Orden> createOrden(@RequestBody OrdenDto ordenDto) {
         try {
             Orden newOrden = new Orden();
-            newOrden.setFecha_orden(LocalDateTime.now());
+
+            // Formatear la fecha como "dd/MM/yy HH:mm:ss"
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
+            String formattedDate = LocalDateTime.now().format(formatter);
+
+            newOrden.setFecha_orden(formattedDate); // Asignar la fecha como String
             newOrden.setEstado("Pagada"); // Encriptar la contraseña
             newOrden.setId_cliente(ordenDto.getId_cliente());
             newOrden.setId_tienda(ordenDto.getId_tienda());

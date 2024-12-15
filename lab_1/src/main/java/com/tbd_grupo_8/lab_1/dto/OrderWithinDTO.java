@@ -9,10 +9,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class OrderWithinDTO {
-    private int idOrden;
-    private LocalDateTime fechaOrden;
+    private int id_orden;         // Cambiado de idOrden
+    private String fecha_orden;  // Cambiado de fechaOrden
     private String estado;
     private double total;
-    private int idCliente;
-    private double distanciaKm;
+    private int id_cliente;      // Cambiado de idCliente
+    private double distancia_km; // Cambiado de distanciaKm
+    private double latitude;
+    private double longitude;
 }

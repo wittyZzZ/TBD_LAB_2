@@ -96,12 +96,10 @@ VALUES ('Tomás Soto', ST_SetSRID(ST_MakePoint(-70.60836609, -33.50862745), 4326
 ('Andrés Garrido', ST_SetSRID(ST_MakePoint(-70.57405727196812, -33.54751053310172), 4326));
 
 -- Inserción de datos en la tabla Orden
-INSERT INTO ORDEN (estado, id_cliente, total, id_repartidor, id_tienda) VALUES
-('Enviada', 10, 24000, 1, 2),
-('Completada', 1, 30000, 2, 1),
-('Enviada', 4, 5600, 3, 1),
-('Enviada', 16, 12000, 4, 1),
-('Completada', 1, 44000, 1, 1);
+INSERT INTO ORDEN (fecha_orden, estado, id_cliente, total, id_repartidor, id_tienda) VALUES
+('15/12/23 12:34:56', 'Pagada', 1, 24000.00, null, 1),
+('15/12/23 14:45:30', 'Enviada', 2, 30000.00, 1, 2),
+('15/12/23 16:50:00', 'Completada', 3, 15000.00, 2, 1);
 
 -- Inserción de datos en la tabla Poligono
 INSERT INTO ZONA_REPARTO (nombre, poligono)

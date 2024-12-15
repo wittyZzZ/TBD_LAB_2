@@ -16,14 +16,15 @@ public class OrdenRepository {
 
     public List<Orden> findAll() {
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery("SELECT id_orden, fecha_orden, estado, id_cliente, total, id_tienda FROM orden")
+            return conn.createQuery("SELECT id_orden, " +
+                            "fecha_orden, estado, id_cliente, total, id_tienda, id_repartidor FROM orden")
                     .executeAndFetch(Orden.class);
         }
     }
 
     public Orden findById(long id) {
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery("SELECT id_orden, fecha_orden, estado, id_cliente, total, id_tienda" +
+            return conn.createQuery("SELECT id_orden, fecha_orden, estado, id_cliente, total, id_tienda, id_repartidor" +
                             " FROM orden WHERE id_orden = :id")
                     .addParameter("id", id)
                     .executeAndFetchFirst(Orden.class);
@@ -55,6 +56,7 @@ public class OrdenRepository {
                     "id_cliente = :id_cliente," +
                     "total = :total," +
                     "id_tienda = :id_tienda" +
+                    "id_repartidor = :id_repartidor" +
                     " WHERE id_orden = :id_orden";
             conn.createQuery(sql)
                 .addParameter("fecha_orden", orden.getFecha_orden())
@@ -62,6 +64,7 @@ public class OrdenRepository {
                 .addParameter("id_cliente", orden.getId_cliente())
                 .addParameter("total", orden.getTotal())
                 .addParameter("id_tienda", orden.getId_tienda())
+                .addParameter("id_repartidor", orden.getId_repartidor())
                 .executeUpdate();
             return orden;
         }

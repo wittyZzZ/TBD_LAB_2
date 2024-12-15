@@ -20,4 +20,14 @@ const remove = (id) => {
   return httpClient.delete(`/api/orden/${id}`);
 };
 
-export default { getAll, getById, create, update, remove };
+
+const getOrdersWithinRadius = (idTienda, radiusKm) => {
+  return httpClient.get('/api/orden/inradius', {
+    params: {
+      idTienda: idTienda,
+      radiusKm: radiusKm
+    }
+  });
+};
+
+export default { getAll, getById, create, update, remove, getOrdersWithinRadius };

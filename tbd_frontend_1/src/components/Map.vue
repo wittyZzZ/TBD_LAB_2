@@ -10,6 +10,7 @@
   import storeicon from "../assets/store5.png";
   import ordericon from "../assets/order2.png";
   import deliveryicon from "../assets/shipment.png";
+import { polygon } from "leaflet";
   
   export default {
     name: "Map",
@@ -18,6 +19,7 @@
         map: null, // Almacena la instancia del mapa Leaflet
         circleGroup: null, // Almacena el grupo de círculos
         markerGroup: null, // Almacena el grupo de marcadores
+        polygonGroup: null
       };
     },
     mounted() {
@@ -85,6 +87,8 @@
       // Limpia todos los marcadores del mapa
       clearMarkers() {
         this.markerGroup.clearLayers();
+        this.circleGroup.clearLayers();
+        this.polygonGroup.clearLayers();
       },
   
       // Dibuja un círculo en el mapa

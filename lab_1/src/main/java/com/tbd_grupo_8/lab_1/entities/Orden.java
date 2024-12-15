@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Data
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Orden {
     private Long id_orden;
-    private LocalDateTime fecha_orden;
+    private String fecha_orden;
     private String estado;
     private Long id_cliente;
     private Double total;
