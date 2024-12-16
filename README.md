@@ -1,4 +1,4 @@
-# Laboratorio 1 - Bases de datos Avanzadas
+# Laboratorio 2 - Bases de datos Avanzadas
 ## Laboratorio desarrollado por el grupo n°8.
 ### Integrantes de grupo 8
 
@@ -10,13 +10,14 @@
 
 # Descripción del proyecto
 
-El objetivo es diseñar y desarrollar un sistema de base de datos relacional para un E-commerce, donde se gestionen productos, órdenes de compra, clientes y el inventario en tiempo real. Garantizando que cuando un cliente realice una compra, el stock de productos se actualice automáticamente, y si el stock de un producto llega a 0, este se marque como “agotado”.
+El objetivo es diseñar y desarrollar un sistema para un E-commerce, donde se gestionen productos, órdenes de compra, clientes, inventario en tiempo real, zonas de reparto, tiendas o sucursales y repartidores. Garantizando que cuando un cliente realice una compra, el stock de productos se actualice automáticamente, y si el stock de un producto llega a 0, este se marque como “agotado”. Además que se le asigne un repartidor al cliente según la tienda o sucursal. Además de poder hacer un seguimiento mediante consultas, sobre la cercanía de clientes, repartos y pedidos respecto a una tienda específica.
 
 # Recursos utilizados para el desarrollo del proyecto:
 
    ## Base de datos
    * Postgres SQL versión 16
    * PgAdmin versión 4
+   * PostGIS 3.5 Bundle for PostgreSQL (add-on)
 
    ## Backend
    * IntelliJ IDEA Ultimate
@@ -33,7 +34,7 @@ Esta guía ayudará a configurar el entorno de desarrollo para trabajar con Inte
 
 ## 1. Clonar el repositorio
 
-git clone https://github.com/gonzaloArevalo/LAB_TBD
+git clone https://github.com/wittyZzZ/TBD_LAB_2
 
 ## 2. Instalación de Node.js
 
@@ -58,6 +59,25 @@ git clone https://github.com/gonzaloArevalo/LAB_TBD
 1. Descargar pgAdmin desde el sitio web oficial: [Descargar pgAdmin](https://www.pgadmin.org/download/).
 
 2. Instalar pgAdmin siguiendo las instrucciones para el sistema operativo.
+
+### 3.3 Instalación de PostGIS 3.5
+
+1. Abrir el menú principal de Windows, buscar el grupo PostgreSQL y dar click en Aplicación Stack Buillder (Gestor de paquetes de Postgresql), seleccionar la base de datos (PostgreSQL 16 on port 5432) y presionar el botón **Next**
+
+2. Buscar y expandir **Spacial Extensions**, marcar la casilla PostGis 3.4 Bundle for PostgreSQL, presionar el botón **Next** para que el Add-on se instale y finalizar la instalación.
+
+<details>
+   <summary>Ver más detalles</summary>
+
+   Buscar y seleccionar Aplicación Stack Buillder
+   ![StackBuilder](img/StackBuilder.png)
+
+   Seleccionar la base de datos
+   ![Server](img/SeleccionaServer.png)
+
+   Seleccionar **Spacial Extensions**
+   ![PostGIG](img/PostGIS.png)
+</details>
 
 ## 4. Crear base de datos y cargar información
 
@@ -115,7 +135,7 @@ Después de ejecutar el script, verificar que los datos se hayan cargado correct
 
 2. Ejecutar "mvn clean install" para instalar las dependencias necesarias descritas en el archivo pom.xml
 
-3. Ejecutar directamente backend desde IntelliJ IDEA  
+3. Ejecutar directamente backend desde IntelliJ IDEA
 
 ## 6. Revisión de código y Ejecución de Frontend:
 
@@ -124,17 +144,15 @@ Después de ejecutar el script, verificar que los datos se hayan cargado correct
 2. Abrir una terminal en VSC y ejecutar los siguientes comandos:
 
    * Ejecutar "npm install" para instalar las dependencias necesarias descritas en el archivo package.json
-  
+
    * Ejecutar "npm run serve" para iniciar el servidor de desarrollo de Vue.js.
 
 3. Abrir el navegador web y navegar a la dirección http://localhost:5173/ para ver la aplicación de Vue.js en funcionamiento.
 
 ## 7. Funcionalidades especificas a desarrollar
 
-1. Crear un trigger que marque un producto como "agotado" automáticamente cuando su stock llegue a 0 tras una venta.
+1. Mostrar las órdenes que han sido enviadas a clientes dentro de un radio de 10 km desde un almacén específico.
 
-2. Crear un trigger para registrar en una tabla de auditoría cada vez que se actualice el precio de un producto.
+2. Listar los repartidores que han entregado pedidos en una zona específica definida por un polígono (zona de reparto).
 
-## 8. Consultas SQL especificas
-
-1. ¿Cuál es el promedio de productos diferentes comprados por cliente en las órdenes en las que se gastó más de $500?
+3. Determinar cuántos repartidores operan dentro de un área de 30 km alrededor de la tienda principal.
