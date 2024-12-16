@@ -152,3 +152,8 @@ Después de ejecutar el script, verificar que los datos se hayan cargado correct
 2. Listar los repartidores que han entregado pedidos en una zona específica definida por un polígono (zona de reparto).
 
 3. Determinar cuántos repartidores operan dentro de un área de 30 km alrededor de la tienda principal.
+
+## 8. Login en aplicación web
+
+* Existen 29 usuarios cargados en la base de datos, y para loguearse con uno de ellos el nombre de usuario es "user_i" (con i = {1,2,3,...,29} ) y la contraseña es "123" para todos.
+
