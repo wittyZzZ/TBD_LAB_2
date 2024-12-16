@@ -89,8 +89,6 @@ git clone https://github.com/wittyZzZ/TBD_LAB_2
       * psql -U postgres -f dbCreate.sql
       * psql -U postgres -f loadData.sql
       * psql -U postgres -f triggerCreate.sql
-      * psql -U postgres -f testTrigger.sql (para revisar funcionamiento de triggers)
-      * psql -U postgres -f runStatements.sql
 
 Importante: se usa usuario "postgres" para conectarse a la base de datos. Si se utiliza un usuario diferente, reemplazar "postgres" por el nombre del usuario correspondiente.
 
@@ -122,9 +120,7 @@ NOTA IMPORTANTE:
    * dbCreate.sql
    * loadData.sql
    * triggerCreate.sql
-   * testTrigger.sql (para revisar funcionamiento de triggers)
-   * runStatements.sql
-
+     
 ### 4.3 Verificar la Carga de Datos
 
 Después de ejecutar el script, verificar que los datos se hayan cargado correctamente en las tablas correspondientes. Para ello, se puede ejecutar una consulta SQL simple en pgAdmin o en la terminal de PostgreSQL.
