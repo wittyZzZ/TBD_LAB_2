@@ -89,8 +89,6 @@ git clone https://github.com/wittyZzZ/TBD_LAB_2
       * psql -U postgres -f dbCreate.sql
       * psql -U postgres -f loadData.sql
       * psql -U postgres -f triggerCreate.sql
-      * psql -U postgres -f testTrigger.sql (para revisar funcionamiento de triggers)
-      * psql -U postgres -f runStatements.sql
 
 Importante: se usa usuario "postgres" para conectarse a la base de datos. Si se utiliza un usuario diferente, reemplazar "postgres" por el nombre del usuario correspondiente.
 
