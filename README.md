@@ -120,9 +120,7 @@ NOTA IMPORTANTE:
    * dbCreate.sql
    * loadData.sql
    * triggerCreate.sql
-   * testTrigger.sql (para revisar funcionamiento de triggers)
-   * runStatements.sql
-
+     
 ### 4.3 Verificar la Carga de Datos
 
 Después de ejecutar el script, verificar que los datos se hayan cargado correctamente en las tablas correspondientes. Para ello, se puede ejecutar una consulta SQL simple en pgAdmin o en la terminal de PostgreSQL.
