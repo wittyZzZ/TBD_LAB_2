@@ -73,7 +73,21 @@ INSERT INTO CLIENTE (username, direccion, email, contrasena, telefono, rol, coor
 ('user_18', 'Calle Luna 67, Ñuñoa', 'tomas.rivera@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-1568', 'USER', ST_SetSRID(ST_MakePoint(-70.6170, -33.4640), 4326)),
 ('user_19', 'Av. Principal 5, Maipú', 'isabel.romero@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-8947', 'ADMIN', ST_SetSRID(ST_MakePoint(-70.7500, -33.5000), 4326)),
 ('user_20', 'Calle Real 19, Peñalolén', 'vicente.navarro@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3256', 'USER', ST_SetSRID(ST_MakePoint(-70.5450, -33.4920), 4326)),
-('user_21', '24 Nte., Viña del Mar', 'vicente.peralta@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3256', 'USER', ST_SetSRID(ST_MakePoint(-71.54226306197091, -33.002067847491986), 4326));
+('user_21', '24 Nte., Viña del Mar', 'vicente.peralta@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3256', 'USER', ST_SetSRID(ST_MakePoint(-71.54226306197091, -33.002067847491986), 4326)),
+-- Región de Valparaíso
+('user_22', 'Calle Lima 202, Viña del Mar', 'user.vina1@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-1111', 'USER', ST_SetSRID(ST_MakePoint(-71.540, -33.025), 4326)),
+('user_23', 'Calle Miraflores 101, San Antonio', 'user.san1@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-2222', 'USER', ST_SetSRID(ST_MakePoint(-71.618, -33.585), 4326)),
+-- Región del Biobío
+('user_24', 'Calle Freire 404, Concepción', 'user.conce1@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-3333', 'USER', ST_SetSRID(ST_MakePoint(-73.045, -36.820), 4326)),
+('user_25', 'Calle Independencia 306, Chillán', 'user.chillan1@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-4444', 'USER', ST_SetSRID(ST_MakePoint(-72.100, -36.610), 4326)),
+-- Región de La Araucanía
+('user_26', 'Calle Alemania 1201, Temuco', 'user.temuco1@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-5555', 'USER', ST_SetSRID(ST_MakePoint(-72.590, -38.730), 4326)),
+-- Región de Los Lagos
+('user_27', 'Calle Chinquihue 321, Puerto Montt', 'user.pm1@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-6666', 'USER', ST_SetSRID(ST_MakePoint(-72.940, -41.465), 4326)),
+-- Región de Antofagasta
+('user_28', 'Calle Baquedano 101, Antofagasta', 'user.antofa1@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-7777', 'USER', ST_SetSRID(ST_MakePoint(-70.398, -23.648), 4326)),
+-- Región de Tarapacá
+('user_29', 'Calle Tarapacá 202, Iquique', 'user.iquique1@mail.com', '$2a$10$dlbYCOz.DNvH98Aqjm4Yk.wQ6ReUh9yBjrcTLPkNHRDdhE8IIzgS.', '555-8888', 'USER', ST_SetSRID(ST_MakePoint(-70.140, -20.210), 4326));
 
 -- Inserción de datos en la tabla Tienda
 INSERT INTO TIENDA (nombre, direccion, coordenadas) 
@@ -86,7 +100,20 @@ VALUES ('Tienda Costanera Center', 'Av. Andres Bello 2425, Providencia, Santiago
 ('Tecnodetodo', 'Av. Domingo Sta. María 3584, 8640722 Renca, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.69452693082134, -33.40700876892923), 4326)),
 ('Techcenter', 'San Diego 335, 8320000 Santiago, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.65089521869716, -33.4484501686001), 4326)),
 ('Tecnozona', 'Francisco Bilbao 1344, Local 103, 7500000 Providencia, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.6096002299189, -33.437859593913444), 4326)),
-('Informatica y electronica Lufraja - Punto Blue express', 'Alberdi 01781, 8500020 Santiago, Quinta Normal, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.70295864279399, -33.42567739504398), 4326));
+('Informatica y electronica Lufraja - Punto Blue express', 'Alberdi 01781, 8500020 Santiago, Quinta Normal, Región Metropolitana', ST_SetSRID(ST_MakePoint(-70.70295864279399, -33.42567739504398), 4326)),
+('Tienda Viña Centro', 'Av. Valparaíso 101, Viña del Mar, Valparaíso', ST_SetSRID(ST_MakePoint(-71.543, -33.020), 4326)),
+('Tienda San Antonio', 'Calle Blanco 505, San Antonio, Valparaíso', ST_SetSRID(ST_MakePoint(-71.621, -33.590), 4326)),
+-- Región del Biobío
+('Tienda Concepción Centro', 'Av. Paicaví 1234, Concepción, Biobío', ST_SetSRID(ST_MakePoint(-73.048, -36.826), 4326)),
+('Tienda Chillán', 'Calle Libertad 345, Chillán, Biobío', ST_SetSRID(ST_MakePoint(-72.105, -36.606), 4326)),
+-- Región de La Araucanía
+('Tienda Temuco Centro', 'Av. Alemania 789, Temuco, La Araucanía', ST_SetSRID(ST_MakePoint(-72.593, -38.735), 4326)),
+-- Región de Los Lagos
+('Tienda Puerto Montt', 'Calle Antonio Varas 123, Puerto Montt, Los Lagos', ST_SetSRID(ST_MakePoint(-72.936, -41.468), 4326)),
+-- Región de Antofagasta
+('Tienda Antofagasta Centro', 'Av. Brasil 456, Antofagasta, Antofagasta', ST_SetSRID(ST_MakePoint(-70.400, -23.650), 4326)),
+-- Región de Tarapacá
+('Tienda Iquique', 'Av. Arturo Prat 789, Iquique, Tarapacá', ST_SetSRID(ST_MakePoint(-70.142, -20.215), 4326));
 
 -- Inserción de datos en la tabla Repartidor
 INSERT INTO REPARTIDOR (nombre, coordenadas)
@@ -94,7 +121,22 @@ VALUES ('Tomás Soto', ST_SetSRID(ST_MakePoint(-70.60836609, -33.50862745), 4326
 ('Carlos Barra', ST_SetSRID(ST_MakePoint(-70.6453284199841, -33.45860089018716), 4326)),
 ('Benjamín Tapia', ST_SetSRID(ST_MakePoint(-70.7103335299697, -33.50162765386649), 4326)),
 ('Matías Silva', ST_SetSRID(ST_MakePoint(-70.76772848894939, -33.44778595432466), 4326)),
-('Andrés Garrido', ST_SetSRID(ST_MakePoint(-71.54492236676212, -33.02332421999087), 4326));
+('Andrés Garrido', ST_SetSRID(ST_MakePoint(-71.54492236676212, -33.02332421999087), 4326)),
+-- Región de Valparaíso
+('Joaquín Valdés', ST_SetSRID(ST_MakePoint(-71.538, -33.024), 4326)),
+('Francisca Araya', ST_SetSRID(ST_MakePoint(-71.620, -33.590), 4326)),
+-- Región del Biobío
+('Cristóbal Morales', ST_SetSRID(ST_MakePoint(-73.043, -36.823), 4326)),
+('Daniela Sánchez', ST_SetSRID(ST_MakePoint(-72.102, -36.609), 4326)),
+-- Región de La Araucanía
+('Matías Herrera', ST_SetSRID(ST_MakePoint(-72.594, -38.732), 4326)),
+-- Región de Los Lagos
+('Sofía Pérez', ST_SetSRID(ST_MakePoint(-72.938, -41.467), 4326)),
+-- Región de Antofagasta
+('Felipe Gutiérrez', ST_SetSRID(ST_MakePoint(-70.399, -23.652), 4326)),
+-- Región de Tarapacá
+('Camila Rojas', ST_SetSRID(ST_MakePoint(-70.141, -20.212), 4326));
+
 
 -- Inserción de datos en la tabla Orden
 INSERT INTO ORDEN (fecha_orden, estado, id_cliente, total, id_repartidor, id_tienda) VALUES
@@ -105,8 +147,22 @@ INSERT INTO ORDEN (fecha_orden, estado, id_cliente, total, id_repartidor, id_tie
 (TO_CHAR(CURRENT_TIMESTAMP, 'DD/MM/YY HH24:MI:SS'), 'Completada', 3, 15000.00, 2, 1);
 
 -- Inserción de datos en la tabla Poligono
-INSERT INTO ZONA_REPARTO (nombre, poligono)
-VALUES ('Poligono Centro', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.68965994719805 -33.419622713280866, -70.63343880436038 -33.436767034525424, -70.60684528230406 -33.41658069751892, -70.58021703839037 -33.48742592788876, -70.69165479386703 -33.49488968909503, -70.68965994719805 -33.419622713280866)')), 4326)),
-('Poligono Puente Alto', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.55608391865024 -33.54342781519428, -70.6196885668074 -33.54201144195442, -70.59856793794873 -33.62695273425572, -70.53423499229359 -33.6061296330255, -70.55608391865024 -33.54342781519428)')), 4326)),
-('Poligono Viña del Mar', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-71.54938886905275 -33.000659557745905, -71.50974757352077 -33.006616685862916, -71.50745616915475 -33.04504009861507, -71.56817838485404 -33.023717172932265, -71.54938886905275 -33.000659557745905)')), 4326)),
-('Poligono Santiago', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.76233181623087 -33.383944888168216, -70.66545818578015 -33.36756690642463, -70.60721514415948 -33.38642613149192, -70.54203392164673 -33.329007657048415, -70.49355731556004 -33.33735851993195, -70.53503729769275 -33.609990046732385, -70.7064545773473 -33.644944725790786, -70.86187957211999 -33.5750211910383, -70.76233181623087 -33.383944888168216)')), 4326));
+INSERT INTO ZONA_REPARTO (nombre, poligono) VALUES 
+('Zona Centro', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.68965994719805 -33.419622713280866, -70.63343880436038 -33.436767034525424, -70.60684528230406 -33.41658069751892, -70.58021703839037 -33.48742592788876, -70.69165479386703 -33.49488968909503, -70.68965994719805 -33.419622713280866)')), 4326)),
+('Zona Puente Alto', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.55608391865024 -33.54342781519428, -70.6196885668074 -33.54201144195442, -70.59856793794873 -33.62695273425572, -70.53423499229359 -33.6061296330255, -70.55608391865024 -33.54342781519428)')), 4326)),
+('Zona Viña del Mar 1', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-71.54938886905275 -33.000659557745905, -71.50974757352077 -33.006616685862916, -71.50745616915475 -33.04504009861507, -71.56817838485404 -33.023717172932265, -71.54938886905275 -33.000659557745905)')), 4326)),
+('Zona Santiago', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.76233181623087 -33.383944888168216, -70.66545818578015 -33.36756690642463, -70.60721514415948 -33.38642613149192, -70.54203392164673 -33.329007657048415, -70.49355731556004 -33.33735851993195, -70.53503729769275 -33.609990046732385, -70.7064545773473 -33.644944725790786, -70.86187957211999 -33.5750211910383, -70.76233181623087 -33.383944888168216)')), 4326)),
+-- Región de Valparaíso
+('Zona Viña del Mar 2', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-71.550 -33.010, -71.530 -33.010, -71.530 -33.030, -71.550 -33.030, -71.550 -33.010)')), 4326)),
+('Zona San Antonio', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-71.630 -33.580, -71.610 -33.580, -71.610 -33.600, -71.630 -33.600, -71.630 -33.580)')), 4326)),
+-- Región del Biobío
+('Zona Concepción', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-73.050 -36.810, -73.040 -36.810, -73.040 -36.830, -73.050 -36.830, -73.050 -36.810)')), 4326)),
+('Zona Chillán', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-72.110 -36.600, -72.100 -36.600, -72.100 -36.620, -72.110 -36.620, -72.110 -36.600)')), 4326)),
+-- Región de La Araucanía
+('Zona Temuco', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-72.600 -38.720, -72.590 -38.720, -72.590 -38.740, -72.600 -38.740, -72.600 -38.720)')), 4326)),
+-- Región de Los Lagos
+('Zona Puerto Montt', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-72.950 -41.460, -72.930 -41.460, -72.930 -41.480, -72.950 -41.480, -72.950 -41.460)')), 4326)),
+-- Región de Antofagasta
+('Zona Antofagasta', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.410 -23.640, -70.390 -23.640, -70.390 -23.660, -70.410 -23.660, -70.410 -23.640)')), 4326)),
+-- Región de Tarapacá
+('Zona Iquique', ST_SetSRID(ST_MakePolygon(ST_GeomFromText('LINESTRING(-70.150 -20.200, -70.130 -20.200, -70.130 -20.220, -70.150 -20.220, -70.150 -20.200)')), 4326));
