@@ -8,9 +8,10 @@
   import greypng from "../assets/marker-icon-2x-grey.png";
   import redpng from "../assets/marker-icon-2x-red.png";
   import storeicon from "../assets/store5.png";
+  import clienticon from "../assets/client.png";
   import ordericon from "../assets/order2.png";
   import deliveryicon from "../assets/shipment.png";
-import { polygon } from "leaflet";
+  import { polygon } from "leaflet";
   
   export default {
     name: "Map",
@@ -77,6 +78,18 @@ import { polygon } from "leaflet";
               shadowSize: [41, 41],
             });
             marker = L.marker([lat, lon], { title: name, icon: deliveryIcon });
+            break;
+          case "client":
+            const clientIcon = new L.Icon({
+              iconUrl: clienticon,
+              shadowUrl:
+                "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+              iconSize: [50, 50],
+              iconAnchor: [12, 41],
+              popupAnchor: [1, -34],
+              shadowSize: [41, 41],
+            });
+            marker = L.marker([lat, lon], { title: name, icon: clientIcon });
             break;
           default:
             marker = L.marker([lat, lon], { title: name });

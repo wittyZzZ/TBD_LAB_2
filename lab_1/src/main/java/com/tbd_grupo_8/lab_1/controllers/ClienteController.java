@@ -1,6 +1,7 @@
 package com.tbd_grupo_8.lab_1.controllers;
 
 import com.tbd_grupo_8.lab_1.entities.Cliente;
+import com.tbd_grupo_8.lab_1.entities.Repartidor;
 import com.tbd_grupo_8.lab_1.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,5 +59,13 @@ public class ClienteController {
             return new ResponseEntity<>(deletedCliente, HttpStatus.OK);
         }
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/inradius")
+    public ResponseEntity<List<Cliente>> getClientesWithinradius(
+            @RequestParam int id_tienda_input,
+            @RequestParam double radius_km) {
+        List<Cliente> clientes = clienteService.getClientesWithinradius(id_tienda_input,radius_km);
+        return ResponseEntity.ok(clientes);
     }
 }

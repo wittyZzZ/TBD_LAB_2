@@ -13,6 +13,7 @@ import OrdersView from '@/views/OrdersView.vue'
 import OrdersByStore from '@/views/OrdersByStore.vue'
 import DeliveryBy30 from '@/views/DeliveryBy30.vue'
 import DeliveryByZone from '@/views/DeliveryByZone.vue'
+import ClientsByRadius from '@/views/ClientsByRadius.vue'
 
 const routes = [
   {
@@ -87,6 +88,11 @@ const routes = [
     path: '/deliveryzone',
     name: 'DeliveryByZone',
     component: DeliveryByZone
+  },
+  {
+    path: '/clientsradius',
+    name: 'ClientsByRadius',
+    component: ClientsByRadius
   },
   {
     path: '/:pathMatch(.*)*', // Ruta catch-all

@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container class="mt-15">
       <v-card>
         <v-card-title>Gestión de Órdenes</v-card-title>
         <v-card-subtitle>Visualiza, crea y edita órdenes</v-card-subtitle>
@@ -77,7 +77,7 @@
               </v-menu>
               <v-select
                 v-model="form.estado"
-                :items="['Pendiente', 'Procesando', 'Completada', 'Cancelada']"
+                :items="['Enviada', 'Completada', 'Pagada']"
                 label="Estado"
                 required
               ></v-select>
@@ -87,6 +87,7 @@
                 type="number"
                 step="0.01"
                 required
+                prefix="$"
               ></v-text-field>
               <v-select
                 v-model="form.id_repartidor"
@@ -118,13 +119,13 @@
         ordenes: [],
         repartidores: [],
         headers: [
-          { text: "ID Orden", value: "id_orden" },
-          { text: "Fecha", value: "fecha_orden" },
-          { text: "Estado", value: "estado" },
-          { text: "ID Cliente", value: "id_cliente" },
-          { text: "Total", value: "total" },
-          { text: "Repartidor", value: "id_repartidor" },
-          { text: "Acciones", value: "acciones", sortable: false },
+          { title: "ID Orden", value: "id_orden" },
+          { title: "Fecha", value: "fecha_orden" },
+          { title: "Estado", value: "estado" },
+          { title: "ID Cliente", value: "id_cliente" },
+          { title: "Total", value: "total" },
+          { title: "Repartidor", value: "id_repartidor" },
+          { title: "Acciones", value: "acciones", sortable: false },
         ],
         dialog: false,
         form: {
@@ -213,68 +214,7 @@
         this.dialog = false;
       },
     },
-   
-    /*headers: [
-            { text: "ID Orden", value: "id_orden" },
-            { text: "Fecha", value: "fecha_orden" },
-            { text: "Estado", value: "estado" },
-            { text: "ID Cliente", value: "id_cliente" },
-            { text: "Total", value: "total" },
-            { text: "Repartidor", value: "id_delivery" },
-            { text: "Acciones", value: "acciones", sortable: false },
-        ] */
-        /* ordenes: [
-          { id_orden: 1, fecha_orden: "2024-12-10", estado: "Pendiente", id_cliente: 101, total: 1200.5, id_delivery: 1 },
-          { id_orden: 2, fecha_orden: "2024-12-11", estado: "Completada", id_cliente: 102, total: 800.0, id_delivery: 2 },
-        ],
-        repartidores: [
-          { id_repartidor: 1, nombre: "Juan Pérez" },
-          { id_repartidor: 2, nombre: "María López" },
-          { id_repartidor: 3, nombre: "Carlos Ruiz" },
-        ], */
-    /* methods: {
-      getRepartidorName(id) {
-        const rep = this.repartidores.find(r => r.id_repartidor === id);
-        return rep ? rep.nombre : 'Sin asignar';
-      },
-      openDialog() {
-        this.form = {
-          id_orden: null,
-          fecha_orden: null,
-          estado: "",
-          id_cliente: null,
-          total: null,
-          id_delivery: "",
-
-        };
-        this.formTitle = "Nueva Orden";
-        this.dialog = true;
-      },
-      editOrden(item) {
-        this.form = { ...item };
-        this.formTitle = "Editar Orden";
-        this.dialog = true;
-      },
-      saveOrden() {
-        if (!this.$refs.form.validate()) return;
   
-        if (this.form.id_orden) {
-          const index = this.ordenes.findIndex(o => o.id_orden === this.form.id_orden);
-          if (index !== -1) this.ordenes.splice(index, 1, { ...this.form });
-        } else {
-          this.form.id_orden = this.ordenes.length + 1;
-          this.ordenes.push({ ...this.form });
-        }
-        this.closeDialog();
-      },
-      deleteOrden(item) {
-        this.ordenes = this.ordenes.filter(o => o.id_orden !== item.id_orden);
-      },
-      closeDialog() {
-        this.dialog = false;
-      },
-    },
-  }; */
   };
   </script>
   

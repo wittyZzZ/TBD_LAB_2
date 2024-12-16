@@ -1,6 +1,7 @@
 package com.tbd_grupo_8.lab_1.repositories;
 
 import com.tbd_grupo_8.lab_1.entities.Cliente;
+import com.tbd_grupo_8.lab_1.entities.Repartidor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
@@ -29,7 +30,7 @@ public class ClienteRepository {
 
     // Crear un cliente
     public Cliente createCliente(Cliente cliente) {
-        String sql = "INSERT INTO cliente (username, direccion, email, contrasena, telefono, rol, coordenadas, latitude, longitude) " +
+        String sql = "INSERT INTO cliente (username, direccion, email, contrasena, telefono, rol, coordenadas) " +
                 "VALUES (:username, :direccion, :email, :contrasena, :telefono, :rol, ST_SetSRID(ST_MakePoint(:longitude, :latitude), 4326)) " +
                 "RETURNING *";
         try (Connection con = sql2o.open()) {
@@ -40,8 +41,8 @@ public class ClienteRepository {
                     .addParameter("contrasena", cliente.getContrasena())
                     .addParameter("telefono", cliente.getTelefono())
                     .addParameter("rol", cliente.getRol())
-                    .addParameter("longitude", cliente.getLongitude())
-                    .addParameter("latitude", cliente.getLatitude())
+                    .addParameter("longitude", 0)
+                    .addParameter("latitude", 0)
                     .executeAndFetchFirst(Cliente.class);
         } catch (Exception e) {
             System.out.println("Error al crear cliente: " + e.getMessage());
@@ -130,6 +131,16 @@ public class ClienteRepository {
         } catch (Exception e) {
             System.out.println("Error al eliminar cliente: " + e.getMessage());
             return null;
+        }
+    }
+
+    public List<Cliente> getClientesWithinradius(int id_tienda_input, double radius_km) {
+        String sql = "SELECT * FROM get_clientes_within_radius(:id_tienda_input, :radius_km)";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id_tienda_input", id_tienda_input)
+                    .addParameter("radius_km", radius_km)
+                    .executeAndFetch(Cliente.class);
         }
     }
 }

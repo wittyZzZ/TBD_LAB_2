@@ -199,3 +199,36 @@ BEGIN
         t.id_tienda = id_tienda_input;
 END;
 $$ LANGUAGE plpgsql;
+
+-- Procedimiento almacenado para obtener cliente dentro de un radio específico desde una tienda
+CREATE OR REPLACE FUNCTION get_clientes_within_radius(id_tienda_input INTEGER, radius_km DOUBLE PRECISION) 
+RETURNS TABLE (
+    id_cliente INTEGER,
+    username varchar(255),
+    direccion varchar(255),
+    email varchar(100),
+    contrasena varchar(100),
+    telefono varchar(20),
+    rol varchar(20),
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        c.id_cliente,
+        c.username,
+        c.direccion,
+        c.email,
+        c.contrasena,
+        c.telefono,
+        c.rol,
+        ST_Y(c.coordenadas) AS latitude,
+        ST_X(c.coordenadas) AS longitude
+    FROM 
+        cliente c
+    INNER JOIN tienda t ON ST_DistanceSphere(c.coordenadas, t.coordenadas) <= radius_km * 1000
+    WHERE 
+        t.id_tienda = id_tienda_input;
+END;
+$$ LANGUAGE plpgsql;

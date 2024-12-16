@@ -1,6 +1,7 @@
 package com.tbd_grupo_8.lab_1.services;
 
 import com.tbd_grupo_8.lab_1.entities.Cliente;
+import com.tbd_grupo_8.lab_1.entities.Repartidor;
 import com.tbd_grupo_8.lab_1.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,9 @@ public class ClienteService {
     public Cliente updateCliente(Cliente cliente) { return clienteRepository.updateCliente(cliente); }
     public Cliente deleteCliente(Long id) {
         return clienteRepository.deleteCliente(id);
+    }
+
+    public List<Cliente> getClientesWithinradius(int id_tienda_input, double radius_km) {
+        return clienteRepository.getClientesWithinradius(id_tienda_input,radius_km);
     }
 }
